@@ -249,7 +249,7 @@ function ServicePreview() {
           </li>
         ))}
       </ul>
-      <div className="mt-3 flex animate-soft-pulse items-center justify-center rounded-xl bg-whatsapp py-2.5 text-xs font-bold text-whatsapp-foreground">
+      <div className="mt-3 flex animate-soft-pulse items-center justify-center rounded-xl bg-whatsapp py-3 text-xs font-extrabold text-whatsapp-foreground shadow-glow-whatsapp">
         Chat on WhatsApp
       </div>
     </PhoneFrame>
@@ -264,7 +264,7 @@ function ProductPreview() {
         {SAMPLE_PRODUCTS.map((p, i) => (
           <div key={p} className="overflow-hidden rounded-xl border border-border bg-card">
             <div
-              className={`h-14 ${i % 2 === 0 ? "bg-accent" : "bg-secondary"}`}
+              className={`h-14 ${i % 2 === 0 ? "bg-gradient-to-br from-saffron to-terracotta/70" : "bg-gradient-to-br from-teal/70 to-primary"}`}
               aria-hidden="true"
             />
             <div className="p-1.5">
@@ -296,7 +296,7 @@ function BothPreview() {
       <div className="mt-2 grid grid-cols-3 gap-1.5">
         {SAMPLE_PRODUCTS.slice(0, 3).map((p, i) => (
           <div key={p} className="overflow-hidden rounded-lg border border-border">
-            <div className={`h-9 ${i % 2 === 0 ? "bg-accent" : "bg-secondary"}`} aria-hidden="true" />
+            <div className={`h-9 ${i % 2 === 0 ? "bg-gradient-to-br from-saffron to-terracotta/70" : "bg-gradient-to-br from-teal/70 to-primary"}`} aria-hidden="true" />
             <p className="truncate px-1 py-0.5 text-[0.55rem] font-semibold text-foreground">{p}</p>
           </div>
         ))}
@@ -308,7 +308,7 @@ function BothPreview() {
           </li>
         ))}
       </ul>
-      <div className="mt-3 flex animate-soft-pulse items-center justify-center rounded-xl bg-whatsapp py-2.5 text-xs font-bold text-whatsapp-foreground">
+      <div className="mt-3 flex animate-soft-pulse items-center justify-center rounded-xl bg-whatsapp py-3 text-xs font-extrabold text-whatsapp-foreground shadow-glow-whatsapp">
         Chat on WhatsApp
       </div>
     </PhoneFrame>
@@ -475,7 +475,7 @@ export default function GrowthFunnel() {
         {step === 1 && (
           <StepShell stepKey="s1">
             <Guide text="Quick question first — it takes 10 seconds." />
-            <h2 className="text-xl font-bold leading-snug text-foreground">
+            <h2 className="text-balance text-xl font-extrabold leading-snug text-foreground sm:text-2xl">
               Do you have a Google Business Profile (the listing that shows on Google Maps/Search)?
             </h2>
             <div className="mt-5 space-y-3">
@@ -502,7 +502,7 @@ export default function GrowthFunnel() {
         {step === 2 && (
           <StepShell stepKey="s2">
             <Guide text="Great! Let's check how it's set up." />
-            <h2 className="text-xl font-bold leading-snug text-foreground">
+            <h2 className="text-balance text-xl font-extrabold leading-snug text-foreground sm:text-2xl">
               Is your website properly linked on your GMB listing?
             </h2>
             <div className="mt-5 space-y-3">
@@ -529,7 +529,7 @@ export default function GrowthFunnel() {
         {step === 25 && (
           <StepShell stepKey="s25">
             <Guide text="Nicely done — you're ahead of most local businesses." />
-            <h2 className="text-xl font-bold leading-snug text-foreground">
+            <h2 className="text-balance text-xl font-extrabold leading-snug text-foreground sm:text-2xl">
               Nice! What else are you looking for?
             </h2>
             <fieldset className="mt-5 space-y-3 border-0 p-0">
@@ -539,15 +539,15 @@ export default function GrowthFunnel() {
                 return (
                   <label
                     key={service}
-                    className={`flex cursor-pointer items-center gap-3 rounded-2xl border bg-card px-5 py-4 text-base font-semibold shadow-soft transition-colors ${
-                      checked ? "border-primary" : "border-border"
+                    className={`flex min-h-[3.25rem] cursor-pointer items-center gap-3 rounded-2xl border-2 bg-card px-4 py-4 text-base font-bold shadow-soft transition-all hover:shadow-lift sm:px-5 ${
+                      checked ? "border-teal bg-teal/5" : "border-border"
                     }`}
                   >
                     <input
                       type="checkbox"
                       checked={checked}
                       onChange={() => toggleService(service)}
-                      className="h-5 w-5 accent-[var(--primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="h-5 w-5 shrink-0 accent-[var(--color-teal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     />
                     <span className="text-card-foreground">{service}</span>
                   </label>
@@ -576,7 +576,7 @@ export default function GrowthFunnel() {
         {step === 3 && (
           <StepShell stepKey="s3">
             <Guide text="Last bit — so we build the right page for you." />
-            <h2 className="text-xl font-bold leading-snug text-foreground">
+            <h2 className="text-balance text-xl font-extrabold leading-snug text-foreground sm:text-2xl">
               Tell us about your business
             </h2>
             <div className="mt-5 space-y-3">
@@ -611,7 +611,7 @@ export default function GrowthFunnel() {
         {step === 4 && offer && (
           <StepShell stepKey={`s4-${answers.businessType}`}>
             <Guide text="Here's what we'll build for you." />
-            <h2 className="text-2xl font-extrabold leading-tight text-foreground">
+            <h2 className="text-balance text-[1.5rem] font-extrabold leading-tight text-foreground sm:text-3xl">
               {offer.headline}
             </h2>
 
@@ -621,19 +621,24 @@ export default function GrowthFunnel() {
               {answers.businessType === "both" && <BothPreview />}
             </div>
 
-            <div className="mt-6 rounded-3xl border border-border bg-card p-5 shadow-soft">
-              <p className="text-lg font-extrabold text-card-foreground">{offer.plan}</p>
+            <div className="mt-6 overflow-hidden rounded-3xl border-2 border-terracotta/40 bg-card shadow-lift">
+              <div className="bg-gradient-to-r from-terracotta to-saffron px-4 py-3 sm:px-5">
+                <p className="text-base font-extrabold text-terracotta-foreground sm:text-lg">
+                  {offer.plan}
+                </p>
+              </div>
+              <div className="p-4 sm:p-5">
               <ul className="mt-3 space-y-2">
                 {offer.bullets.map((b) => (
                   <li key={b} className="flex gap-2 text-sm text-muted-foreground">
-                    <span aria-hidden="true" className="font-bold text-primary">
+                    <span aria-hidden="true" className="shrink-0 font-bold text-teal">
                       ✓
                     </span>
                     <span>{b}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 rounded-2xl bg-muted px-4 py-3 text-sm font-medium text-foreground">
+              <p className="mt-4 rounded-2xl border border-teal/25 bg-teal/10 px-4 py-3 text-sm font-medium text-foreground">
                 We build it first. You only pay once you're happy with it — no upfront payment.
               </p>
               <div className="mt-4">
@@ -644,14 +649,15 @@ export default function GrowthFunnel() {
               <div className="mt-3 flex items-center justify-center gap-2">
                 <WhatsAppPill label="Every enquiry lands on WhatsApp" />
               </div>
+              </div>
             </div>
 
-            <div className="mt-5 rounded-3xl border border-dashed border-border bg-secondary/50 p-5">
+            <div className="mt-5 rounded-3xl border-2 border-dashed border-teal/50 bg-teal/5 p-4 sm:p-5">
               <p className="text-sm text-secondary-foreground">{offer.upsell}</p>
               <button
                 type="button"
                 onClick={() => selectPlan("₹4,999 — Custom Website")}
-                className="mt-3 w-full rounded-2xl border border-primary bg-card px-5 py-3 text-sm font-bold text-primary transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="mt-3 min-h-[3rem] w-full rounded-2xl border-2 border-teal bg-card px-5 py-3 text-sm font-bold text-teal shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal hover:text-teal-foreground hover:shadow-lift active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 Select this instead
               </button>
@@ -662,7 +668,7 @@ export default function GrowthFunnel() {
         {step === 5 && (
           <StepShell stepKey="s5">
             <Guide text="Almost there — just your details." />
-            <h2 className="text-2xl font-extrabold leading-tight text-foreground">
+            <h2 className="text-balance text-[1.5rem] font-extrabold leading-tight text-foreground sm:text-3xl">
               Let's Get This Live For You
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -685,7 +691,7 @@ export default function GrowthFunnel() {
                   onChange={(e) => update({ name: e.target.value })}
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
-                  className="mt-1.5 w-full rounded-2xl border border-input bg-card px-4 py-3.5 text-base text-card-foreground shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="mt-1.5 min-h-[3.25rem] w-full rounded-2xl border-2 border-input bg-card px-4 py-3.5 text-base text-card-foreground shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
                 />
                 {errors.name && (
                   <p id="name-error" role="alert" className="mt-1 text-sm text-destructive">
@@ -711,7 +717,7 @@ export default function GrowthFunnel() {
                   onChange={(e) => update({ phone: e.target.value })}
                   aria-invalid={!!errors.phone}
                   aria-describedby={errors.phone ? "phone-error" : undefined}
-                  className="mt-1.5 w-full rounded-2xl border border-input bg-card px-4 py-3.5 text-base text-card-foreground shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="mt-1.5 min-h-[3.25rem] w-full rounded-2xl border-2 border-input bg-card px-4 py-3.5 text-base text-card-foreground shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
                 />
                 {errors.phone && (
                   <p id="phone-error" role="alert" className="mt-1 text-sm text-destructive">
@@ -729,7 +735,7 @@ export default function GrowthFunnel() {
                   name="preferredTime"
                   value={answers.preferredTime}
                   onChange={(e) => update({ preferredTime: e.target.value })}
-                  className="mt-1.5 w-full rounded-2xl border border-input bg-card px-4 py-3.5 text-base text-card-foreground shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="mt-1.5 min-h-[3.25rem] w-full rounded-2xl border-2 border-input bg-card px-4 py-3.5 text-base text-card-foreground shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <option value="Morning">Morning</option>
                   <option value="Afternoon">Afternoon</option>
@@ -744,14 +750,14 @@ export default function GrowthFunnel() {
 
         {step === 6 && (
           <StepShell stepKey="s6">
-            <div className="rounded-3xl bg-card p-6 text-center shadow-soft">
+            <div className="rounded-3xl border-2 border-terracotta/25 bg-card p-5 text-center shadow-lift sm:p-6">
               <img
                 src={characterGuide}
                 alt="Your guide giving a thumbs up"
                 loading="lazy"
                 width={816}
                 height={816}
-                className="mx-auto h-24 w-24 rounded-full bg-accent object-cover"
+                className="mx-auto h-24 w-24 rounded-full bg-gradient-to-br from-accent to-saffron/60 object-cover ring-4 ring-terracotta/25"
               />
               <h2 className="mt-4 text-2xl font-extrabold text-card-foreground">
                 You're All Set! 🎉
@@ -763,8 +769,9 @@ export default function GrowthFunnel() {
                 href={waLink(leadMessage(answers))}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl bg-whatsapp px-6 py-4 text-base font-bold text-whatsapp-foreground shadow-soft transition-all hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="mt-5 flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-2xl bg-whatsapp px-5 py-4 text-base font-extrabold text-whatsapp-foreground shadow-glow-whatsapp transition-all hover:brightness-105 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2 active:scale-[0.98]"
               >
+                <WhatsAppIcon />
                 Message Us on WhatsApp
               </a>
             </div>
@@ -782,7 +789,7 @@ export default function GrowthFunnel() {
                 s === 5 ? (answers.businessType ? 4 : 25) : s === 4 ? 3 : s === 25 ? 2 : s === 3 ? (answers.hasGMB === "yes" ? 2 : 1) : s === 2 ? 1 : 0,
               )
             }
-            className="mx-auto mt-8 block rounded-full px-4 py-2 text-sm font-medium text-muted-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="mx-auto mt-8 block min-h-[2.75rem] rounded-full px-5 py-2 text-sm font-semibold text-terracotta underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             ← Back
           </button>
