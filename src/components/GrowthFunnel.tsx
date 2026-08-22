@@ -28,10 +28,10 @@ const waLink = (message: string) =>
 function Header() {
   return (
     <header className="flex items-center justify-center gap-2 pt-5 pb-3">
-      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-[0.7rem] font-extrabold text-primary-foreground">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-terracotta to-saffron text-[0.7rem] font-extrabold text-terracotta-foreground shadow-glow-terracotta">
         360°
       </span>
-      <span className="text-sm font-bold tracking-tight text-foreground">
+      <span className="truncate text-sm font-extrabold tracking-tight text-foreground sm:text-base">
         360° Growth Partner
       </span>
     </header>
@@ -42,9 +42,9 @@ function Progress({ current }: { current: number }) {
   const total = 6;
   const pct = Math.round((current / total) * 100);
   return (
-    <div className="px-1 pb-6">
+    <div className="pb-6">
       <div
-        className="h-1.5 w-full overflow-hidden rounded-full bg-secondary"
+        className="h-2 w-full overflow-hidden rounded-full bg-secondary"
         role="progressbar"
         aria-label="Progress through the questions"
         aria-valuemin={0}
@@ -52,16 +52,16 @@ function Progress({ current }: { current: number }) {
         aria-valuenow={pct}
       >
         <div
-          className="h-full rounded-full bg-primary transition-all duration-500 ease-out"
-          style={{ width: `${Math.max(pct, 6)}%` }}
+          className="h-full rounded-full bg-gradient-to-r from-teal via-primary to-terracotta transition-all duration-500 ease-out"
+          style={{ width: `${Math.max(pct, 8)}%` }}
         />
       </div>
       <div className="mt-2 flex justify-center gap-1.5" aria-hidden="true">
         {Array.from({ length: total + 1 }).map((_, i) => (
           <span
             key={i}
-            className={`h-1.5 w-1.5 rounded-full transition-colors ${
-              i <= current ? "bg-primary" : "bg-border"
+            className={`h-2 w-2 rounded-full transition-colors ${
+              i <= current ? "bg-terracotta" : "bg-border"
             }`}
           />
         ))}
@@ -72,16 +72,16 @@ function Progress({ current }: { current: number }) {
 
 function Guide({ text }: { text: string }) {
   return (
-    <div className="mb-5 flex items-center gap-3">
+    <div className="mb-5 flex items-start gap-3">
       <img
         src={characterGuide}
         alt="Your 360° Growth Partner guide"
         loading="lazy"
         width={816}
         height={816}
-        className="h-14 w-14 shrink-0 rounded-full bg-accent object-cover"
+        className="h-12 w-12 shrink-0 rounded-full bg-gradient-to-br from-accent to-saffron/60 object-cover ring-2 ring-terracotta/30 sm:h-14 sm:w-14"
       />
-      <p className="rounded-2xl rounded-bl-sm bg-card px-4 py-2.5 text-sm text-muted-foreground shadow-soft">
+      <p className="min-w-0 rounded-2xl rounded-bl-sm border border-terracotta/15 bg-card px-4 py-2.5 text-sm text-muted-foreground shadow-soft">
         {text}
       </p>
     </div>
@@ -118,7 +118,7 @@ function PrimaryButton({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className="w-full rounded-2xl bg-primary px-6 py-4 text-base font-bold text-primary-foreground shadow-soft transition-all hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.99] disabled:opacity-60"
+      className="min-h-[3.25rem] w-full rounded-2xl bg-gradient-to-r from-terracotta to-saffron px-5 py-4 text-base font-extrabold text-terracotta-foreground shadow-glow-terracotta transition-all hover:brightness-105 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] disabled:opacity-60 sm:text-lg"
     >
       {children}
     </button>
@@ -138,7 +138,7 @@ function ChoiceButton({
     <button
       type="button"
       onClick={onClick}
-      className="w-full rounded-2xl border border-border bg-card px-5 py-4 text-left text-base font-semibold text-card-foreground shadow-soft transition-all hover:border-primary hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.99]"
+      className="min-h-[3.25rem] w-full rounded-2xl border-2 border-border bg-card px-4 py-4 text-left text-base font-bold text-card-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:border-teal hover:bg-teal/5 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] sm:px-5"
     >
       {children}
       {hint ? (
@@ -148,12 +148,18 @@ function ChoiceButton({
   );
 }
 
+function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={`${className} fill-current`}>
+      <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.7-.1a12 12 0 0 1-6.5-5.7c-.4-.8-.4-1.5-.2-2 .2-.4.7-1 1-1.1.3-.1.7 0 .9.4l.7 1.4c.1.3 0 .5-.1.7l-.4.5c-.1.2-.2.4 0 .7a8 8 0 0 0 3.2 2.8c.3.1.5.1.7-.1l.6-.6c.2-.2.4-.2.7-.1l1.4.7c.4.2.5.5.4.9Z" />
+    </svg>
+  );
+}
+
 function WhatsAppPill({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-whatsapp px-3 py-1.5 text-xs font-bold text-whatsapp-foreground">
-      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-3.5 w-3.5 fill-current">
-        <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.7-.1a12 12 0 0 1-6.5-5.7c-.4-.8-.4-1.5-.2-2 .2-.4.7-1 1-1.1.3-.1.7 0 .9.4l.7 1.4c.1.3 0 .5-.1.7l-.4.5c-.1.2-.2.4 0 .7a8 8 0 0 0 3.2 2.8c.3.1.5.1.7-.1l.6-.6c.2-.2.4-.2.7-.1l1.4.7c.4.2.5.5.4.9Z" />
-      </svg>
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-whatsapp px-3 py-1.5 text-center text-xs font-bold text-whatsapp-foreground shadow-glow-whatsapp">
+      <WhatsAppIcon className="h-3.5 w-3.5 shrink-0" />
       {label}
     </span>
   );
@@ -161,11 +167,11 @@ function WhatsAppPill({ label }: { label: string }) {
 
 function PhoneFrame({ children, label }: { children: React.ReactNode; label: string }) {
   return (
-    <figure className="m-0 w-full">
-      <div className="rounded-[1.6rem] border border-border bg-card p-2 shadow-soft">
-        <div className="rounded-[1.2rem] bg-background p-3">{children}</div>
+    <figure className="m-0 w-full min-w-0">
+      <div className="rounded-[1.4rem] border-2 border-border bg-card p-1.5 shadow-soft sm:p-2">
+        <div className="rounded-[1rem] bg-background p-2 sm:p-3">{children}</div>
       </div>
-      <figcaption className="mt-2 text-center text-[0.7rem] font-semibold uppercase tracking-wide text-muted-foreground">
+      <figcaption className="mt-2 text-center text-[0.65rem] font-extrabold uppercase tracking-wide text-terracotta sm:text-[0.7rem]">
         {label}
       </figcaption>
     </figure>
@@ -174,11 +180,12 @@ function PhoneFrame({ children, label }: { children: React.ReactNode; label: str
 
 function GoogleRow({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-2 rounded-lg bg-secondary/60 px-2 py-1.5 text-[0.65rem] text-secondary-foreground">
+    <div className="flex items-center gap-2 rounded-lg bg-secondary/70 px-2 py-1.5 text-[0.62rem] leading-tight text-secondary-foreground sm:text-[0.65rem]">
       {children}
     </div>
   );
 }
+
 
 /* ---------- offer content ---------- */
 
