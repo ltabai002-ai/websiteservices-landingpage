@@ -399,53 +399,105 @@ export default function GrowthFunnel() {
             </p>
 
             <div className="mt-6 rounded-3xl border border-terracotta/15 bg-card/90 p-4 shadow-soft sm:p-6">
-              {/* Google Business Profile Dashboard Mockup */}
+              {/* Real Google Business Profile Dashboard Mockup */}
               <div className="mx-auto max-w-sm rounded-2xl border border-border bg-background p-4 shadow-sm">
-                <div className="flex items-center gap-2 border-b pb-3 mb-3">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-google-blue/15 text-google-blue font-extrabold text-xs">
-                    G
+                <div className="flex items-center justify-between border-b pb-3 mb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-google-blue/15 text-google-blue font-extrabold text-xs">
+                      G
+                    </span>
+                    <div>
+                      <h4 className="text-xs font-bold text-foreground">Your business on Google</h4>
+                      <p className="text-[0.65rem] text-muted-foreground flex items-center gap-1">
+                        <svg className="h-3 w-3 inline text-google-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        Sharma Traders · Only visible to you
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-[0.62rem] font-bold text-google-blue bg-google-blue/10 px-2 py-0.5 rounded-full">
+                    Verified
                   </span>
-                  <span className="text-xs font-bold text-muted-foreground tracking-wider uppercase">Google Business Profile</span>
                 </div>
-                
-                <h3 className="text-base font-extrabold text-foreground">Sharma Traders</h3>
-                <p className="text-xs text-muted-foreground">Dashboard Status</p>
 
-                <div className="mt-4 space-y-2.5">
-                  {/* Website Section with Error */}
-                  <div className="flex items-center justify-between rounded-xl border border-destructive/20 bg-destructive/5 p-3">
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-lg" role="img" aria-label="Website error">🌐</span>
-                      <div>
-                        <p className="text-xs font-bold text-foreground">Website Link</p>
-                        <p className="text-[0.7rem] text-destructive font-semibold">❌ Website missing / error</p>
-                      </div>
+                {/* Dashboard Action Grid */}
+                <div className="grid grid-cols-3 gap-3.5">
+                  {/* Edit Profile */}
+                  <button type="button" className="flex flex-col items-center text-center">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-secondary">
+                      <svg className="h-5 w-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
                     </div>
-                    <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[0.6rem] font-bold text-destructive">Fix Required</span>
-                  </div>
+                    <span className="mt-1.5 text-[0.68rem] font-medium text-foreground">Edit profile</span>
+                  </button>
 
-                  {/* Services Section with Error */}
-                  <div className="flex items-center justify-between rounded-xl border border-destructive/20 bg-destructive/5 p-3">
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-lg" role="img" aria-label="Services error">💼</span>
-                      <div>
-                        <p className="text-xs font-bold text-foreground">Services List</p>
-                        <p className="text-[0.7rem] text-destructive font-semibold">❌ No services listed</p>
-                      </div>
+                  {/* Add Website - ERROR */}
+                  <button type="button" className="flex flex-col items-center text-center relative">
+                    {/* Error notification badge */}
+                    <span className="absolute top-0 right-3 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[0.55rem] font-extrabold text-white ring-2 ring-background animate-soft-pulse">
+                      !
+                    </span>
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-destructive/10 border-2 border-destructive/30 text-destructive">
+                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                      </svg>
                     </div>
-                    <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[0.6rem] font-bold text-destructive">Fix Required</span>
-                  </div>
+                    <span className="mt-1.5 text-[0.68rem] font-bold text-destructive">Add website</span>
+                  </button>
 
-                  {/* WhatsApp/Contact Section with Error */}
-                  <div className="flex items-center justify-between rounded-xl border border-destructive/20 bg-destructive/5 p-3">
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-lg" role="img" aria-label="WhatsApp error">💬</span>
-                      <div>
-                        <p className="text-xs font-bold text-foreground">WhatsApp Connection</p>
-                        <p className="text-[0.7rem] text-destructive font-semibold">❌ Not connected</p>
-                      </div>
+                  {/* Edit Services - ERROR */}
+                  <button type="button" className="flex flex-col items-center text-center relative">
+                    <span className="absolute top-0 right-3 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[0.55rem] font-extrabold text-white ring-2 ring-background animate-soft-pulse">
+                      !
+                    </span>
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-destructive/10 border-2 border-destructive/30 text-destructive">
+                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                      </svg>
                     </div>
-                    <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[0.6rem] font-bold text-destructive">Fix Required</span>
+                    <span className="mt-1.5 text-[0.68rem] font-bold text-destructive">Edit services</span>
+                  </button>
+
+                  {/* WhatsApp Connection - ERROR */}
+                  <button type="button" className="flex flex-col items-center text-center relative">
+                    <span className="absolute top-0 right-3 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[0.55rem] font-extrabold text-white ring-2 ring-background animate-soft-pulse">
+                      !
+                    </span>
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-destructive/10 border-2 border-destructive/30 text-destructive">
+                      <WhatsAppIcon className="h-5 w-5" />
+                    </div>
+                    <span className="mt-1.5 text-[0.68rem] font-bold text-destructive leading-tight">WhatsApp link</span>
+                  </button>
+
+                  {/* Read Reviews */}
+                  <button type="button" className="flex flex-col items-center text-center">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-secondary">
+                      <svg className="h-5 w-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.365 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.906a1 1 0 00.95-.69l1.518-4.674z" />
+                      </svg>
+                    </div>
+                    <span className="mt-1.5 text-[0.68rem] font-medium text-foreground">Read reviews</span>
+                  </button>
+
+                  {/* Add Photo */}
+                  <button type="button" className="flex flex-col items-center text-center">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-secondary">
+                      <svg className="h-5 w-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    <span className="mt-1.5 text-[0.68rem] font-medium text-foreground">Add photo</span>
+                  </button>
+                </div>
+
+                {/* Dashboard Critical Alert Bar */}
+                <div className="mt-4 p-2.5 rounded-xl bg-destructive/5 border border-destructive/15 text-left flex items-start gap-2 animate-soft-pulse">
+                  <span className="text-destructive text-sm leading-none mt-0.5">⚠️</span>
+                  <div className="text-[0.65rem] text-destructive leading-normal font-semibold">
+                    Customer contact flow is broken. 3 action items need immediate setup.
                   </div>
                 </div>
               </div>
