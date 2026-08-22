@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import characterHero from "@/assets/character-hero.png";
 import characterGuide from "@/assets/character-guide.png";
+import ltabLogo from "@/assets/ltab-logo.png";
 
 const AGENCY_NUMBER = "916000683808";
 
@@ -27,13 +28,12 @@ const waLink = (message: string) =>
 
 function Header() {
   return (
-    <header className="flex items-center justify-center gap-2 pt-5 pb-3">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-terracotta to-saffron text-[0.7rem] font-extrabold text-terracotta-foreground shadow-glow-terracotta">
-        360°
-      </span>
-      <span className="truncate text-sm font-extrabold tracking-tight text-foreground sm:text-base">
-        360° Growth Partner
-      </span>
+    <header className="flex items-center justify-center pt-5 pb-3">
+      <img
+        src={ltabLogo}
+        alt="LTAB logo"
+        className="h-10 w-auto object-contain sm:h-12"
+      />
     </header>
   );
 }
