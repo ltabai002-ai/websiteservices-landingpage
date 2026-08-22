@@ -612,11 +612,56 @@ export default function GrowthFunnel() {
         {step === 0 && (
           <StepShell stepKey="s0">
             <div className="flex justify-center my-6">
-              <h1 className="inline-block rounded-3xl border-4 border-white bg-gradient-to-br from-terracotta via-primary to-teal p-5 text-center shadow-lift">
-                <span className="block text-[1.4rem] font-black leading-snug text-white sm:text-xl lg:text-2xl uppercase tracking-tight">
+              <h1 className="relative overflow-hidden inline-block rounded-3xl border-4 border-white bg-gradient-to-br from-terracotta via-primary to-teal p-5 text-center shadow-lift">
+                {/* SVG Background Isometric Illustration */}
+                <svg
+                  viewBox="0 0 400 200"
+                  className="absolute right-0 bottom-0 h-full w-auto opacity-15 sm:opacity-25 pointer-events-none select-none z-0"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <g transform="translate(180, 25)">
+                    {/* Isometric Base Grid */}
+                    <path d="M 0 80 L 100 30 L 200 80 L 100 130 Z" fill="rgba(255,255,255,0.03)" />
+                    
+                    {/* Extruded Phone Base (Teal/Cyan neon highlights) */}
+                    <g transform="translate(15, 30)">
+                      <path d="M 0 50 L 50 25 L 90 45 L 40 70 Z" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
+                      <path d="M 0 50 L 0 55 L 40 75 L 40 70 Z" fill="rgba(0,0,0,0.15)" />
+                      <path d="M 40 70 L 40 75 L 90 50 L 90 45 Z" fill="rgba(0,0,0,0.08)" />
+                    </g>
+
+                    {/* Floating profile card with stars */}
+                    <g transform="translate(70, 0)">
+                      <path d="M 0 40 L 70 5 L 130 35 L 60 70 Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" />
+                      {/* Ratings stars (yellow/gold glow) */}
+                      <path d="M 20 35 L 50 20" stroke="var(--color-saffron)" strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
+                      {/* Service list items (white/light lines) */}
+                      <path d="M 20 45 L 75 22" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M 20 53 L 60 36" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" />
+                    </g>
+
+                    {/* 3D Map Pin */}
+                    <g transform="translate(130, -20)">
+                      <ellipse cx="20" cy="65" rx="12" ry="5" fill="rgba(0,0,0,0.15)" />
+                      {/* Pin path */}
+                      <path d="M 20 15 C 5 15, 5 35, 20 65 C 35 35, 35 15, 20 15 Z" fill="url(#pinGradBanner)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+                      <circle cx="20" cy="30" r="5" fill="#ffffff" />
+                    </g>
+                  </g>
+                  <defs>
+                    <linearGradient id="pinGradBanner" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="var(--color-terracotta)" />
+                      <stop offset="100%" stopColor="var(--color-saffron)" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                <span className="relative z-10 block text-[1.4rem] font-black leading-snug text-white sm:text-xl lg:text-2xl uppercase tracking-tight">
                   Upgrade your Google Business Profile
                 </span>
-                <span className="mt-1 block text-[1.75rem] font-black leading-none text-saffron drop-shadow-sm sm:text-2xl lg:text-3xl uppercase tracking-tighter">
+                <span className="relative z-10 mt-1 block text-[1.75rem] font-black leading-none text-saffron drop-shadow-sm sm:text-2xl lg:text-3xl uppercase tracking-tighter">
                   to get more clients!
                 </span>
               </h1>
