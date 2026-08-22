@@ -19,7 +19,12 @@ type Answers = {
   preferredTime: string;
 };
 
-const EXTRA_SERVICES = ["SEO", "Google Ads", "Social Media Management", "Photography"];
+const EXTRA_SERVICES = [
+  "Google Ads (to get more audience)",
+  "Digital Marketing (for branding)",
+  "Photography",
+  "Business Automation (to ease the work)",
+];
 
 const waLink = (message: string) =>
   `https://wa.me/${AGENCY_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -129,20 +134,28 @@ function ChoiceButton({
   children,
   onClick,
   hint,
+  variant = "default",
 }: {
   children: React.ReactNode;
   onClick: () => void;
   hint?: string;
+  variant?: "default" | "green" | "red";
 }) {
+  const variantClasses = {
+    default: "border-border bg-card hover:border-teal hover:bg-teal/5 text-card-foreground focus-visible:ring-teal",
+    green: "border-emerald-600 bg-emerald-600 text-white hover:bg-emerald-700 focus-visible:ring-emerald-500",
+    red: "border-destructive bg-destructive text-white hover:bg-red-600/90 focus-visible:ring-red-500",
+  };
+
   return (
     <button
       type="button"
       onClick={onClick}
-      className="min-h-[3.25rem] w-full rounded-2xl border-2 border-border bg-card px-4 py-4 text-left text-base font-bold text-card-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:border-teal hover:bg-teal/5 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] sm:px-5"
+      className={`min-h-[3.25rem] w-full rounded-2xl border-2 px-4 py-4 text-left text-base font-extrabold shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] sm:px-5 ${variantClasses[variant]}`}
     >
       {children}
       {hint ? (
-        <span className="mt-1 block text-sm font-normal text-muted-foreground">{hint}</span>
+        <span className={`mt-1 block text-sm font-normal ${variant === "default" ? "text-muted-foreground" : "text-white/85"}`}>{hint}</span>
       ) : null}
     </button>
   );
@@ -579,9 +592,9 @@ export default function GrowthFunnel() {
         {step === 0 && (
           <StepShell stepKey="s0">
             <h1 className="text-balance text-center text-[1.75rem] font-extrabold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
-              Fix Your Google Business Profile —{" "}
+              Upgrade Your Google Business Profile —{" "}
               <span className="bg-gradient-to-r from-terracotta to-primary bg-clip-text text-transparent">
-                Get Linked.
+                Get More Clients.
               </span>
             </h1>
             <p className="mx-auto mt-3 max-w-prose text-center text-[0.95rem] leading-relaxed text-muted-foreground sm:text-lg">
@@ -611,11 +624,38 @@ export default function GrowthFunnel() {
               </div>
             </div>
 
+            {/* 3-Step To-Do List */}
+            <div className="mt-6 rounded-3xl border border-teal/15 bg-card/85 p-4 shadow-soft sm:p-5">
+              <h3 className="text-sm font-extrabold text-foreground mb-3 sm:text-base">
+                Steps to Upgrade Your Business:
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs">
+                    1
+                  </span>
+                  <span className="text-sm font-bold text-foreground">Create a website</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs">
+                    2
+                  </span>
+                  <span className="text-sm font-bold text-foreground">Add your services and products</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs">
+                    3
+                  </span>
+                  <span className="text-sm font-bold text-foreground">Connect to WhatsApp easily</span>
+                </li>
+              </ul>
+            </div>
+
             <p className="mt-4 text-center text-sm font-semibold text-terracotta">
               Trusted by 100+ businesses already.
             </p>
             <div className="mt-5">
-              <PrimaryButton onClick={() => setStep(1)}>Let's Fix This</PrimaryButton>
+              <PrimaryButton onClick={() => setStep(1)}>Let's Start</PrimaryButton>
             </div>
           </StepShell>
         )}
@@ -633,6 +673,7 @@ export default function GrowthFunnel() {
 
             <div className="mt-5 space-y-3">
               <ChoiceButton
+                variant="green"
                 onClick={() => {
                   update({ hasGMB: "yes" });
                   setStep(2);
@@ -641,6 +682,7 @@ export default function GrowthFunnel() {
                 Yes
               </ChoiceButton>
               <ChoiceButton
+                variant="red"
                 onClick={() => {
                   update({ hasGMB: "no", websiteLinked: "" });
                   setStep(3);
@@ -654,26 +696,44 @@ export default function GrowthFunnel() {
 
         {step === 2 && (
           <StepShell stepKey="s2">
-            <Guide text="Great! Let's check how it's set up." />
+            <Guide text="Great! Let's check your website needs." />
             <h2 className="text-balance text-xl font-extrabold leading-snug text-foreground sm:text-2xl">
-              Is your website properly linked on your GMB listing?
+              Do you want to build a quick website to achieve these 3 things?
             </h2>
+            
+            <ul className="mt-4 space-y-2.5 text-left border rounded-2xl bg-card p-4 border-border">
+              <li className="flex gap-2.5 text-sm font-semibold text-muted-foreground">
+                <span className="text-teal font-extrabold">1.</span>
+                <span>Connect your website to your Google Business Profile to get traffic</span>
+              </li>
+              <li className="flex gap-2.5 text-sm font-semibold text-muted-foreground">
+                <span className="text-teal font-extrabold">2.</span>
+                <span>Add your services and products to the website</span>
+              </li>
+              <li className="flex gap-2.5 text-sm font-semibold text-muted-foreground">
+                <span className="text-teal font-extrabold">3.</span>
+                <span>Make your business easily searchable on Google</span>
+              </li>
+            </ul>
+
             <div className="mt-5 space-y-3">
               <ChoiceButton
+                variant="green"
+                onClick={() => {
+                  update({ websiteLinked: "no" });
+                  setStep(3);
+                }}
+              >
+                Yes, let's build it!
+              </ChoiceButton>
+              <ChoiceButton
+                variant="red"
                 onClick={() => {
                   update({ websiteLinked: "yes" });
                   setStep(25);
                 }}
               >
-                Yes, it's linked and working
-              </ChoiceButton>
-              <ChoiceButton
-                onClick={() => {
-                  update({ websiteLinked: "not sure" });
-                  setStep(3);
-                }}
-              >
-                No / Not sure / Needs improvement
+                No, I already have one linked
               </ChoiceButton>
             </div>
           </StepShell>
@@ -689,10 +749,14 @@ export default function GrowthFunnel() {
               <legend className="sr-only">Additional services</legend>
               {EXTRA_SERVICES.map((service) => {
                 const checked = answers.extraServices.includes(service);
+                const match = service.match(/^(.*?)\s*\((.*?)\)$/);
+                const title = match ? match[1] : service;
+                const description = match ? match[2] : "";
+
                 return (
                   <label
                     key={service}
-                    className={`flex min-h-[3.25rem] cursor-pointer items-center gap-3 rounded-2xl border-2 bg-card px-4 py-4 text-base font-bold shadow-soft transition-all hover:shadow-lift sm:px-5 ${
+                    className={`flex min-h-[3.25rem] cursor-pointer items-center gap-3 rounded-2xl border-2 bg-card px-4 py-4 text-base shadow-soft transition-all hover:shadow-lift sm:px-5 ${
                       checked ? "border-teal bg-teal/5" : "border-border"
                     }`}
                   >
@@ -702,7 +766,12 @@ export default function GrowthFunnel() {
                       onChange={() => toggleService(service)}
                       className="h-5 w-5 shrink-0 accent-[var(--color-teal)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     />
-                    <span className="text-card-foreground">{service}</span>
+                    <div className="flex flex-col text-left">
+                      <span className="font-extrabold text-card-foreground text-sm sm:text-base">{title}</span>
+                      {description && (
+                        <span className="text-xs font-normal text-muted-foreground mt-0.5">({description})</span>
+                      )}
+                    </div>
                   </label>
                 );
               })}
@@ -985,51 +1054,14 @@ export default function GrowthFunnel() {
                 </div>
               </div>
 
-              {/* SEO - shown only if selected */}
-              {answers.extraServices.includes("SEO") && (
-                <div className="overflow-hidden rounded-3xl border-2 border-teal/30 bg-card shadow-soft">
-                  <div className="flex items-center gap-3 bg-gradient-to-r from-teal to-primary px-4 py-3 sm:px-5">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">🔍</span>
-                    <div>
-                      <p className="text-base font-extrabold text-white sm:text-lg">SEO</p>
-                      <p className="text-xs font-medium text-white/80">Get found on Google organically</p>
-                    </div>
-                  </div>
-                  <div className="px-4 py-3 sm:px-5">
-                    <ul className="space-y-1.5">
-                      <li className="flex gap-2 text-sm text-muted-foreground">
-                        <span className="shrink-0 font-bold text-teal">✓</span>
-                        <span>On-page SEO optimization for your website</span>
-                      </li>
-                      <li className="flex gap-2 text-sm text-muted-foreground">
-                        <span className="shrink-0 font-bold text-teal">✓</span>
-                        <span>Google Search Console & Analytics setup</span>
-                      </li>
-                      <li className="flex gap-2 text-sm text-muted-foreground">
-                        <span className="shrink-0 font-bold text-teal">✓</span>
-                        <span>Keyword research & targeting for your area</span>
-                      </li>
-                      <li className="flex gap-2 text-sm text-muted-foreground">
-                        <span className="shrink-0 font-bold text-teal">✓</span>
-                        <span>Local SEO to show up in "near me" searches</span>
-                      </li>
-                      <li className="flex gap-2 text-sm text-muted-foreground">
-                        <span className="shrink-0 font-bold text-teal">✓</span>
-                        <span>Monthly SEO performance report</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              )}
-
               {/* Google Ads - shown only if selected */}
-              {answers.extraServices.includes("Google Ads") && (
+              {answers.extraServices.includes("Google Ads (to get more audience)") && (
                 <div className="overflow-hidden rounded-3xl border-2 border-google-blue/30 bg-card shadow-soft">
                   <div className="flex items-center gap-3 bg-gradient-to-r from-google-blue to-blue-500 px-4 py-3 sm:px-5">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">📢</span>
                     <div>
                       <p className="text-base font-extrabold text-white sm:text-lg">Google Ads</p>
-                      <p className="text-xs font-medium text-white/80">Get customers from paid search</p>
+                      <p className="text-xs font-medium text-white/80">Get more audience & traffic</p>
                     </div>
                   </div>
                   <div className="px-4 py-3 sm:px-5">
@@ -1052,32 +1084,32 @@ export default function GrowthFunnel() {
                       </li>
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-google-blue">✓</span>
-                        <span>Monthly performance tracking & ROI reports</span>
+                        <span>Monthly performance tracking & reports</span>
                       </li>
                     </ul>
                   </div>
                 </div>
               )}
 
-              {/* Social Media Management - shown only if selected */}
-              {answers.extraServices.includes("Social Media Management") && (
+              {/* Digital Marketing - shown only if selected */}
+              {answers.extraServices.includes("Digital Marketing (for branding)") && (
                 <div className="overflow-hidden rounded-3xl border-2 border-saffron/30 bg-card shadow-soft">
                   <div className="flex items-center gap-3 bg-gradient-to-r from-saffron to-terracotta/80 px-4 py-3 sm:px-5">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">📱</span>
                     <div>
-                      <p className="text-base font-extrabold text-terracotta-foreground sm:text-lg">Social Media Management</p>
-                      <p className="text-xs font-medium text-terracotta-foreground/80">Build your brand on social platforms</p>
+                      <p className="text-base font-extrabold text-terracotta-foreground sm:text-lg">Digital Marketing</p>
+                      <p className="text-xs font-medium text-terracotta-foreground/80">Build your brand identity</p>
                     </div>
                   </div>
                   <div className="px-4 py-3 sm:px-5">
                     <ul className="space-y-1.5">
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-saffron">✓</span>
-                        <span>Social media account setup & branding</span>
+                        <span>Brand positioning & consulting</span>
                       </li>
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-saffron">✓</span>
-                        <span>Content calendar with regular posts</span>
+                        <span>Content marketing & branding calendar</span>
                       </li>
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-saffron">✓</span>
@@ -1085,11 +1117,11 @@ export default function GrowthFunnel() {
                       </li>
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-saffron">✓</span>
-                        <span>Engagement & community management</span>
+                        <span>Social media branding templates</span>
                       </li>
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-saffron">✓</span>
-                        <span>Monthly analytics & growth report</span>
+                        <span>Monthly reach & brand metrics reports</span>
                       </li>
                     </ul>
                   </div>
@@ -1110,19 +1142,52 @@ export default function GrowthFunnel() {
                     <ul className="space-y-1.5">
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-primary">✓</span>
-                        <span>Professional product / business photoshoot</span>
+                        <span>Professional product/business photoshoot</span>
                       </li>
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-primary">✓</span>
-                        <span>High-quality edited images (10–20 photos)</span>
+                        <span>High-quality edited visual assets (15–20 photos)</span>
                       </li>
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-primary">✓</span>
-                        <span>Optimized for website, social media & Google</span>
+                        <span>Optimized for website, maps & social media</span>
                       </li>
                       <li className="flex gap-2 text-sm text-muted-foreground">
                         <span className="shrink-0 font-bold text-primary">✓</span>
-                        <span>Full usage rights — use anywhere you want</span>
+                        <span>Full commercial usage rights included</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* Business Automation - shown only if selected */}
+              {answers.extraServices.includes("Business Automation (to ease the work)") && (
+                <div className="overflow-hidden rounded-3xl border-2 border-teal/30 bg-card shadow-soft">
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-teal to-primary px-4 py-3 sm:px-5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">⚙️</span>
+                    <div>
+                      <p className="text-base font-extrabold text-white sm:text-lg">Business Automation</p>
+                      <p className="text-xs font-medium text-white/80">Automate tasks & ease daily work</p>
+                    </div>
+                  </div>
+                  <div className="px-4 py-3 sm:px-5">
+                    <ul className="space-y-1.5">
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>WhatsApp lead routing & CRM automation</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>Quick-replies & auto-responder setup</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>UPI & QR code digital payment integrations</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>Automated workflows (save 5+ hours weekly)</span>
                       </li>
                     </ul>
                   </div>
