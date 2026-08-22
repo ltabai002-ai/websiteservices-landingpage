@@ -595,7 +595,7 @@ export default function GrowthFunnel() {
         {step === 0 && (
           <StepShell stepKey="s0">
             <div className="flex justify-center my-6">
-              <h1 className="inline-block transform rotate-[-1.5deg] rounded-3xl border-4 border-white bg-gradient-to-br from-terracotta via-primary to-teal p-5 text-center shadow-lift transition-transform hover:rotate-0">
+              <h1 className="inline-block transform rounded-3xl border-4 border-white bg-gradient-to-br from-terracotta via-primary to-teal p-5 text-center shadow-lift transition-transform">
                 <span className="block text-[1.4rem] font-black leading-snug text-white sm:text-xl lg:text-2xl uppercase tracking-tight">
                   Upgrade your Google Business Profile
                 </span>
