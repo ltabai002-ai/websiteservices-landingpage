@@ -4,6 +4,40 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --color-whatsapp: oklch(0.63 0.14 152);
+  --color-whatsapp-foreground: oklch(0.99 0.01 120);
+  --color-google-blue: oklch(0.62 0.15 255);
+  --color-cream: oklch(0.97 0.017 85);
+  --shadow-soft: 0 2px 8px oklch(0.4 0.05 70 / 0.06), 0 12px 32px oklch(0.4 0.05 70 / 0.08);
+  --shadow-lift: 0 18px 44px oklch(0.4 0.05 70 / 0.14);
+  --animate-step-in: step-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-soft-pulse: soft-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.63 0.14 152 / 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 12px oklch(0.63 0.14 152 / 0);
+  }
+}
+
+
 /*
  * Design system definition.
  *
