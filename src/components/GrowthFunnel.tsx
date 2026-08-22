@@ -616,38 +616,42 @@ export default function GrowthFunnel() {
                 {/* SVG Background Isometric Illustration */}
                 <svg
                   viewBox="0 0 400 200"
-                  className="absolute right-0 bottom-0 h-full w-auto opacity-15 sm:opacity-25 pointer-events-none select-none z-0"
+                  className="absolute right-0 bottom-0 h-full w-auto opacity-40 sm:opacity-55 pointer-events-none select-none z-0"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
                 >
-                  <g transform="translate(180, 25)">
-                    {/* Isometric Base Grid */}
-                    <path d="M 0 80 L 100 30 L 200 80 L 100 130 Z" fill="rgba(255,255,255,0.03)" />
+                  <g transform="translate(160, 20)">
+                    {/* Isometric Base Grid Platform */}
+                    <path d="M 0 100 L 110 40 L 220 100 L 110 160 Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
                     
                     {/* Extruded Phone Base (Teal/Cyan neon highlights) */}
-                    <g transform="translate(15, 30)">
-                      <path d="M 0 50 L 50 25 L 90 45 L 40 70 Z" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
-                      <path d="M 0 50 L 0 55 L 40 75 L 40 70 Z" fill="rgba(0,0,0,0.15)" />
-                      <path d="M 40 70 L 40 75 L 90 50 L 90 45 Z" fill="rgba(0,0,0,0.08)" />
+                    <g transform="translate(15, 50)">
+                      <path d="M 0 50 L 40 25 L 80 48 L 40 73 Z" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" />
+                      <path d="M 0 50 L 0 55 L 40 78 L 40 73 Z" fill="rgba(0,0,0,0.2)" />
+                      <path d="M 40 73 L 40 78 L 80 53 L 80 48 Z" fill="rgba(0,0,0,0.1)" />
+                      {/* Phone Screen Display Lines */}
+                      <path d="M 12 47 L 38 34" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round" />
+                      <path d="M 18 55 L 48 40" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round" />
                     </g>
 
                     {/* Floating profile card with stars */}
-                    <g transform="translate(70, 0)">
-                      <path d="M 0 40 L 70 5 L 130 35 L 60 70 Z" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" />
-                      {/* Ratings stars (yellow/gold glow) */}
-                      <path d="M 20 35 L 50 20" stroke="var(--color-saffron)" strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
+                    <g transform="translate(85, 10)">
+                      <path d="M 0 45 L 80 5 L 150 40 L 70 80 Z" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" strokeWidth="2" />
+                      {/* Ratings stars row (yellow/gold glow) */}
+                      <path d="M 20 48 L 75 20.5" stroke="var(--color-saffron)" strokeWidth="3" strokeDasharray="3.5 2" strokeLinecap="round" />
                       {/* Service list items (white/light lines) */}
-                      <path d="M 20 45 L 75 22" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" />
-                      <path d="M 20 53 L 60 36" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M 20 56 L 85 23.5" stroke="rgba(255,255,255,0.6)" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M 20 62 L 70 37" stroke="rgba(255,255,255,0.6)" strokeWidth="2" strokeLinecap="round" />
+                      <path d="M 20 68 L 80 38" stroke="rgba(255,255,255,0.6)" strokeWidth="2" strokeLinecap="round" />
                     </g>
 
-                    {/* 3D Map Pin */}
-                    <g transform="translate(130, -20)">
-                      <ellipse cx="20" cy="65" rx="12" ry="5" fill="rgba(0,0,0,0.15)" />
+                    {/* Large 3D Map Pin */}
+                    <g transform="translate(150, -25)">
+                      <ellipse cx="20" cy="70" rx="14" ry="6" fill="rgba(0,0,0,0.25)" />
                       {/* Pin path */}
-                      <path d="M 20 15 C 5 15, 5 35, 20 65 C 35 35, 35 15, 20 15 Z" fill="url(#pinGradBanner)" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-                      <circle cx="20" cy="30" r="5" fill="#ffffff" />
+                      <path d="M 20 15 C 2 15, 2 38, 20 70 C 38 38, 38 15, 20 15 Z" fill="url(#pinGradBanner)" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" />
+                      <circle cx="20" cy="32" r="6.5" fill="#ffffff" />
                     </g>
                   </g>
                   <defs>
