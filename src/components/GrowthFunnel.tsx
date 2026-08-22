@@ -187,6 +187,181 @@ function GoogleRow({ children }: { children: React.ReactNode }) {
 }
 
 
+function GoogleDashboardMockup({ hasErrors = true }: { hasErrors?: boolean }) {
+  return (
+    <div className="mx-auto max-w-sm rounded-2xl border border-border bg-slate-50 p-2.5 shadow-sm">
+      {/* Simulated Google Search Bar */}
+      <div className="flex items-center gap-2 rounded-full bg-white px-3.5 py-2 shadow-sm border border-slate-100 mb-3">
+        <span className="text-sm font-extrabold tracking-tight bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+          Google
+        </span>
+        <div className="h-4 w-[1px] bg-border" />
+        <span className="text-xs font-semibold text-foreground flex-1 truncate">Sharma Traders</span>
+        <svg className="h-4 w-4 text-google-blue shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+
+      {/* Real Google Business Profile Dashboard Widget */}
+      <div className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-sm text-left">
+        <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-3.5">
+          <div className="flex items-center gap-2">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-google-blue text-white font-extrabold text-[0.6rem] shadow-sm">
+              G
+            </span>
+            <div>
+              <h4 className="text-[0.7rem] font-extrabold text-foreground leading-tight">Your business on Google</h4>
+              <p className="text-[0.58rem] text-muted-foreground flex items-center gap-0.5 mt-0.5">
+                <svg className="h-3 w-3 inline text-google-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Only visible to you
+              </p>
+            </div>
+          </div>
+          <span className="text-[0.58rem] font-bold text-google-blue bg-google-blue/10 px-2 py-0.5 rounded-full">
+            Verified
+          </span>
+        </div>
+
+        {/* Dashboard Action Grid */}
+        <div className="grid grid-cols-3 gap-3">
+          {/* Edit Profile */}
+          <div className="flex flex-col items-center text-center">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-200 text-slate-700">
+              <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </div>
+            <span className="mt-1 text-[0.62rem] font-medium text-slate-600">Edit profile</span>
+          </div>
+
+          {/* Add Website */}
+          <div className="flex flex-col items-center text-center relative">
+            {hasErrors ? (
+              <>
+                <span className="absolute top-0 right-3.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-destructive text-[0.5rem] font-black text-white ring-1.5 ring-white animate-soft-pulse">
+                  !
+                </span>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-destructive/10 border border-destructive/30 text-destructive">
+                  <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <span className="mt-1 text-[0.62rem] font-bold text-destructive">Add website</span>
+              </>
+            ) : (
+              <>
+                <span className="absolute top-0 right-3.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-teal text-[0.5rem] font-black text-white ring-1.5 ring-white">
+                  ✓
+                </span>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal/10 border border-teal/30 text-teal">
+                  <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <span className="mt-1 text-[0.62rem] font-bold text-teal">Website linked</span>
+              </>
+            )}
+          </div>
+
+          {/* Edit Services */}
+          <div className="flex flex-col items-center text-center relative">
+            {hasErrors ? (
+              <>
+                <span className="absolute top-0 right-3.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-destructive text-[0.5rem] font-black text-white ring-1.5 ring-white animate-soft-pulse">
+                  !
+                </span>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-destructive/10 border border-destructive/30 text-destructive">
+                  <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                </div>
+                <span className="mt-1 text-[0.62rem] font-bold text-destructive">Edit services</span>
+              </>
+            ) : (
+              <>
+                <span className="absolute top-0 right-3.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-teal text-[0.5rem] font-black text-white ring-1.5 ring-white">
+                  ✓
+                </span>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal/10 border border-teal/30 text-teal">
+                  <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                </div>
+                <span className="mt-1 text-[0.62rem] font-bold text-teal">Services list</span>
+              </>
+            )}
+          </div>
+
+          {/* WhatsApp Connection */}
+          <div className="flex flex-col items-center text-center relative">
+            {hasErrors ? (
+              <>
+                <span className="absolute top-0 right-3.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-destructive text-[0.5rem] font-black text-white ring-1.5 ring-white animate-soft-pulse">
+                  !
+                </span>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-destructive/10 border border-destructive/30 text-destructive">
+                  <WhatsAppIcon className="h-4.5 w-4.5" />
+                </div>
+                <span className="mt-1 text-[0.62rem] font-bold text-destructive leading-tight">WhatsApp link</span>
+              </>
+            ) : (
+              <>
+                <span className="absolute top-0 right-3.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-teal text-[0.5rem] font-black text-white ring-1.5 ring-white">
+                  ✓
+                </span>
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal/10 border border-teal/30 text-teal">
+                  <WhatsAppIcon className="h-4.5 w-4.5" />
+                </div>
+                <span className="mt-1 text-[0.62rem] font-bold text-teal leading-tight">WhatsApp active</span>
+              </>
+            )}
+          </div>
+
+          {/* Read Reviews */}
+          <div className="flex flex-col items-center text-center">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-200 text-slate-700">
+              <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.365 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.906a1 1 0 00.95-.69l1.518-4.674z" />
+              </svg>
+            </div>
+            <span className="mt-1 text-[0.62rem] font-medium text-slate-600">Read reviews</span>
+          </div>
+
+          {/* Add Photo */}
+          <div className="flex flex-col items-center text-center">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-200 text-slate-700">
+              <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <span className="mt-1 text-[0.62rem] font-medium text-slate-600">Add photo</span>
+          </div>
+        </div>
+
+        {/* Dashboard Critical Alert Bar */}
+        {hasErrors ? (
+          <div className="mt-3.5 p-2.5 rounded-lg bg-destructive/5 border border-destructive/15 text-left flex items-start gap-1.5">
+            <span className="text-destructive text-xs leading-none mt-0.5">⚠️</span>
+            <div className="text-[0.6rem] text-destructive leading-normal font-bold">
+              Customer contact flow is broken. 3 action items need immediate setup.
+            </div>
+          </div>
+        ) : (
+          <div className="mt-3.5 p-2.5 rounded-lg bg-teal/5 border border-teal/15 text-left flex items-start gap-1.5">
+            <span className="text-teal text-xs leading-none mt-0.5">✅</span>
+            <div className="text-[0.6rem] text-teal leading-normal font-bold">
+              Customer contact flow active. All channels fully optimized.
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /* ---------- offer content ---------- */
 
 const OFFERS: Record<
@@ -331,10 +506,25 @@ export default function GrowthFunnel() {
   });
   const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
 
+  const progressTotal = useMemo(() => {
+    return answers.websiteLinked === "yes" ? 5 : 7;
+  }, [answers.websiteLinked]);
+
   const progressIndex = useMemo(() => {
-    const map: Record<StepId, number> = { 0: 0, 1: 1, 2: 2, 25: 3, 3: 3, 4: 4, 45: 5, 5: 6, 6: 7 };
-    return map[step];
-  }, [step]);
+    if (step === 0) return 0;
+    if (step === 1) return 1;
+    if (step === 2) return 2;
+
+    const hasWebsiteQuery = answers.websiteLinked === "yes";
+
+    if (hasWebsiteQuery) {
+      const map: Record<StepId, number> = { 0: 0, 1: 1, 2: 2, 25: 3, 3: 3, 4: 4, 45: 4, 5: 5, 6: 6 };
+      return map[step];
+    } else {
+      const map: Record<StepId, number> = { 0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 25: 5, 45: 6, 5: 7, 6: 8 };
+      return map[step];
+    }
+  }, [step, answers.websiteLinked]);
 
   const update = (patch: Partial<Answers>) => setAnswers((a) => ({ ...a, ...patch }));
 
@@ -375,7 +565,7 @@ export default function GrowthFunnel() {
 
   const selectPlan = (plan: string) => {
     update({ selectedPlan: plan });
-    setStep(45);
+    setStep(25); // Go to extra services next
   };
 
   const offer = answers.businessType ? OFFERS[answers.businessType as BusinessType] : null;
@@ -384,123 +574,22 @@ export default function GrowthFunnel() {
     <div className="min-h-screen w-full overflow-x-hidden bg-page-gradient">
       <div className="mx-auto w-full max-w-md px-4 pb-16 sm:max-w-lg sm:px-6 lg:max-w-xl">
         <Header />
-        {step > 0 && step < 6 ? <Progress current={progressIndex} /> : null}
+        {step > 0 && step < 6 ? <Progress current={progressIndex} total={progressTotal} /> : null}
 
         {step === 0 && (
           <StepShell stepKey="s0">
             <h1 className="text-balance text-center text-[1.75rem] font-extrabold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
-              A Website for Your Business —{" "}
+              Fix Your Google Business Profile —{" "}
               <span className="bg-gradient-to-r from-terracotta to-primary bg-clip-text text-transparent">
-                Just ₹99.
+                Get Linked.
               </span>
             </h1>
             <p className="mx-auto mt-3 max-w-prose text-center text-[0.95rem] leading-relaxed text-muted-foreground sm:text-lg">
-              So people can see what you offer and contact you on WhatsApp or call, instantly.
+              Add a professional website, list all your services, and connect customers directly to your WhatsApp.
             </p>
 
-            <div className="mt-6 rounded-3xl border border-terracotta/15 bg-card/90 p-4 shadow-soft sm:p-6">
-              {/* Real Google Business Profile Dashboard Mockup */}
-              <div className="mx-auto max-w-sm rounded-2xl border border-border bg-background p-4 shadow-sm">
-                <div className="flex items-center justify-between border-b pb-3 mb-4">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-google-blue/15 text-google-blue font-extrabold text-xs">
-                      G
-                    </span>
-                    <div>
-                      <h4 className="text-xs font-bold text-foreground">Your business on Google</h4>
-                      <p className="text-[0.65rem] text-muted-foreground flex items-center gap-1">
-                        <svg className="h-3 w-3 inline text-google-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                        Sharma Traders · Only visible to you
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-[0.62rem] font-bold text-google-blue bg-google-blue/10 px-2 py-0.5 rounded-full">
-                    Verified
-                  </span>
-                </div>
-
-                {/* Dashboard Action Grid */}
-                <div className="grid grid-cols-3 gap-3.5">
-                  {/* Edit Profile */}
-                  <button type="button" className="flex flex-col items-center text-center">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-secondary">
-                      <svg className="h-5 w-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                      </svg>
-                    </div>
-                    <span className="mt-1.5 text-[0.68rem] font-medium text-foreground">Edit profile</span>
-                  </button>
-
-                  {/* Add Website - ERROR */}
-                  <button type="button" className="flex flex-col items-center text-center relative">
-                    {/* Error notification badge */}
-                    <span className="absolute top-0 right-3 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[0.55rem] font-extrabold text-white ring-2 ring-background animate-soft-pulse">
-                      !
-                    </span>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-destructive/10 border-2 border-destructive/30 text-destructive">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                      </svg>
-                    </div>
-                    <span className="mt-1.5 text-[0.68rem] font-bold text-destructive">Add website</span>
-                  </button>
-
-                  {/* Edit Services - ERROR */}
-                  <button type="button" className="flex flex-col items-center text-center relative">
-                    <span className="absolute top-0 right-3 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[0.55rem] font-extrabold text-white ring-2 ring-background animate-soft-pulse">
-                      !
-                    </span>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-destructive/10 border-2 border-destructive/30 text-destructive">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                      </svg>
-                    </div>
-                    <span className="mt-1.5 text-[0.68rem] font-bold text-destructive">Edit services</span>
-                  </button>
-
-                  {/* WhatsApp Connection - ERROR */}
-                  <button type="button" className="flex flex-col items-center text-center relative">
-                    <span className="absolute top-0 right-3 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-[0.55rem] font-extrabold text-white ring-2 ring-background animate-soft-pulse">
-                      !
-                    </span>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-destructive/10 border-2 border-destructive/30 text-destructive">
-                      <WhatsAppIcon className="h-5 w-5" />
-                    </div>
-                    <span className="mt-1.5 text-[0.68rem] font-bold text-destructive leading-tight">WhatsApp link</span>
-                  </button>
-
-                  {/* Read Reviews */}
-                  <button type="button" className="flex flex-col items-center text-center">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-secondary">
-                      <svg className="h-5 w-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.365 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.906a1 1 0 00.95-.69l1.518-4.674z" />
-                      </svg>
-                    </div>
-                    <span className="mt-1.5 text-[0.68rem] font-medium text-foreground">Read reviews</span>
-                  </button>
-
-                  {/* Add Photo */}
-                  <button type="button" className="flex flex-col items-center text-center">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-secondary/80 border border-border text-foreground hover:bg-secondary">
-                      <svg className="h-5 w-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    </div>
-                    <span className="mt-1.5 text-[0.68rem] font-medium text-foreground">Add photo</span>
-                  </button>
-                </div>
-
-                {/* Dashboard Critical Alert Bar */}
-                <div className="mt-4 p-2.5 rounded-xl bg-destructive/5 border border-destructive/15 text-left flex items-start gap-2 animate-soft-pulse">
-                  <span className="text-destructive text-sm leading-none mt-0.5">⚠️</span>
-                  <div className="text-[0.65rem] text-destructive leading-normal font-semibold">
-                    Customer contact flow is broken. 3 action items need immediate setup.
-                  </div>
-                </div>
-              </div>
+            <div className="mt-6 rounded-3xl border border-terracotta/15 bg-card/90 p-3 shadow-soft sm:p-5">
+              <GoogleDashboardMockup />
 
               {/* Character & Chat Bubble */}
               <div className="mt-6 flex flex-col items-center">
@@ -526,17 +615,8 @@ export default function GrowthFunnel() {
               Trusted by 100+ businesses already.
             </p>
             <div className="mt-5">
-              <PrimaryButton onClick={() => setStep(1)}>Get My ₹99 Website</PrimaryButton>
+              <PrimaryButton onClick={() => setStep(1)}>Let's Fix This</PrimaryButton>
             </div>
-            <a
-              href={waLink("Hi! I want the ₹99 website for my business.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-2xl bg-whatsapp px-5 py-4 text-base font-extrabold text-whatsapp-foreground shadow-glow-whatsapp transition-all hover:brightness-105 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2 active:scale-[0.98]"
-            >
-              <WhatsAppIcon />
-              Chat on WhatsApp
-            </a>
           </StepShell>
         )}
 
@@ -546,6 +626,11 @@ export default function GrowthFunnel() {
             <h2 className="text-balance text-xl font-extrabold leading-snug text-foreground sm:text-2xl">
               Do you have a Google Business Profile (the listing that shows on Google Maps/Search)?
             </h2>
+
+            <div className="mt-5 rounded-3xl border border-terracotta/15 bg-card/90 p-3 shadow-soft sm:p-5">
+              <GoogleDashboardMockup hasErrors={false} />
+            </div>
+
             <div className="mt-5 space-y-3">
               <ChoiceButton
                 onClick={() => {
@@ -625,22 +710,33 @@ export default function GrowthFunnel() {
             <p className="mt-3 text-sm text-muted-foreground">
               Also ask us about custom digital marketing services.
             </p>
-            <div className="mt-5">
+             <div className="mt-5">
               <PrimaryButton
-                onClick={() =>
-                  selectPlan(
-                    `Additional services: ${
-                      answers.extraServices.length ? answers.extraServices.join(", ") : "to discuss"
-                    }`,
-                  )
-                }
+                onClick={() => {
+                  if (!answers.selectedPlan) {
+                    update({
+                      selectedPlan: `Additional services: ${
+                        answers.extraServices.length ? answers.extraServices.join(", ") : "to discuss"
+                      }`,
+                    });
+                  }
+                  setStep(45);
+                }}
               >
-                Talk to Our Team
+                {answers.selectedPlan ? "Proceed to Summary" : "Talk to Our Team"}
               </PrimaryButton>
             </div>
             <button
               type="button"
-              onClick={() => setStep(2)}
+              onClick={() => {
+                if (answers.selectedPlan && !answers.selectedPlan.startsWith("Additional services")) {
+                  // Clear selection when going back to plan screen
+                  update({ selectedPlan: "" });
+                  setStep(4);
+                } else {
+                  setStep(2);
+                }
+              }}
               className="mx-auto mt-6 block min-h-[2.75rem] rounded-full px-5 py-2 text-sm font-semibold text-terracotta underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               ← Back
@@ -1212,7 +1308,7 @@ export default function GrowthFunnel() {
             type="button"
             onClick={() =>
               setStep((s) =>
-                s === 5 ? 45 : s === 45 ? (answers.businessType ? 4 : 25) : s === 4 ? 3 : s === 25 ? 2 : s === 3 ? (answers.hasGMB === "yes" ? 2 : 1) : s === 2 ? 1 : 0,
+                s === 5 ? 45 : s === 45 ? 25 : s === 4 ? 3 : s === 25 ? (answers.selectedPlan && !answers.selectedPlan.startsWith("Additional services") ? 4 : 2) : s === 3 ? (answers.hasGMB === "yes" ? 2 : 1) : s === 2 ? 1 : 0,
               )
             }
             className="mx-auto mt-8 block min-h-[2.75rem] rounded-full px-5 py-2 text-sm font-semibold text-terracotta underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
