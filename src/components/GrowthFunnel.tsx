@@ -381,45 +381,61 @@ export default function GrowthFunnel() {
   const offer = answers.businessType ? OFFERS[answers.businessType as BusinessType] : null;
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mx-auto w-full max-w-md px-5 pb-14">
+    <div className="min-h-screen w-full overflow-x-hidden bg-page-gradient">
+      <div className="mx-auto w-full max-w-md px-4 pb-16 sm:max-w-lg sm:px-6 lg:max-w-xl">
         <Header />
         {step > 0 && step < 6 ? <Progress current={progressIndex} /> : null}
 
         {step === 0 && (
           <StepShell stepKey="s0">
-            <h1 className="text-center text-3xl font-extrabold leading-tight tracking-tight text-foreground">
-              A Website for Your Business — Just ₹99.
+            <h1 className="text-balance text-center text-[1.75rem] font-extrabold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
+              A Website for Your Business —{" "}
+              <span className="bg-gradient-to-r from-terracotta to-primary bg-clip-text text-transparent">
+                Just ₹99.
+              </span>
             </h1>
-            <p className="mt-3 text-center text-base leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-3 max-w-prose text-center text-[0.95rem] leading-relaxed text-muted-foreground sm:text-lg">
               So people can see what you offer and contact you on WhatsApp or call, instantly.
             </p>
 
-            <div className="mt-6 rounded-3xl bg-card p-4 shadow-soft">
-              <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+            <div className="mt-6 rounded-3xl border border-terracotta/15 bg-card/90 p-3 shadow-soft sm:p-5">
+              <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-1.5 sm:gap-3">
                 <PhoneFrame label="Before">
-                  <p className="text-[0.7rem] font-bold text-foreground">Sharma Traders</p>
+                  <p className="truncate text-[0.68rem] font-bold text-foreground sm:text-sm">
+                    Sharma Traders
+                  </p>
                   <div className="mt-2 space-y-1.5">
                     <GoogleRow>No services listed</GoogleRow>
                     <GoogleRow>No website</GoogleRow>
                     <GoogleRow>No WhatsApp</GoogleRow>
                   </div>
                 </PhoneFrame>
-                <span aria-hidden="true" className="text-xl text-primary">
+                <span
+                  aria-hidden="true"
+                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-terracotta to-saffron text-sm font-bold text-terracotta-foreground shadow-glow-terracotta sm:h-9 sm:w-9 sm:text-base"
+                >
                   →
                 </span>
                 <PhoneFrame label="After">
-                  <p className="text-[0.7rem] font-bold text-foreground">Sharma Traders</p>
+                  <p className="truncate text-[0.68rem] font-bold text-foreground sm:text-sm">
+                    Sharma Traders
+                  </p>
                   <div className="mt-2 space-y-1.5">
                     <div className="flex gap-1">
-                      <span className="h-6 flex-1 rounded bg-accent" aria-hidden="true" />
-                      <span className="h-6 flex-1 rounded bg-secondary" aria-hidden="true" />
+                      <span
+                        className="h-6 flex-1 rounded bg-gradient-to-br from-saffron to-terracotta/70"
+                        aria-hidden="true"
+                      />
+                      <span
+                        className="h-6 flex-1 rounded bg-gradient-to-br from-teal/70 to-primary"
+                        aria-hidden="true"
+                      />
                     </div>
                     <GoogleRow>
                       <span className="font-bold text-google-blue">Website</span> linked
                     </GoogleRow>
                     <GoogleRow>4 services listed</GoogleRow>
-                    <div className="flex animate-soft-pulse items-center justify-center rounded-md bg-whatsapp py-1 text-[0.6rem] font-bold text-whatsapp-foreground">
+                    <div className="flex animate-soft-pulse items-center justify-center rounded-md bg-whatsapp py-1 text-[0.58rem] font-bold text-whatsapp-foreground sm:text-[0.65rem]">
                       WhatsApp
                     </div>
                   </div>
@@ -431,16 +447,28 @@ export default function GrowthFunnel() {
                 alt="Friendly 360° Growth Partner guide welcoming you"
                 width={896}
                 height={1152}
-                className="mx-auto mt-4 h-56 w-auto object-contain"
+                className="mx-auto mt-4 h-auto w-full max-w-[220px] object-contain sm:max-w-[260px]"
               />
             </div>
 
-            <p className="mt-4 text-center text-sm font-medium text-muted-foreground">
+            <p className="mt-4 text-center text-sm font-semibold text-terracotta">
               Trusted by 100+ businesses already.
             </p>
-            <div className="mt-4">
+            <div className="mt-5">
               <PrimaryButton onClick={() => setStep(1)}>Get My ₹99 Website</PrimaryButton>
             </div>
+            <a
+              href={waLink("Hi! I want the ₹99 website for my business.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex min-h-[3.25rem] w-full items-center justify-center gap-2 rounded-2xl bg-whatsapp px-5 py-4 text-base font-extrabold text-whatsapp-foreground shadow-glow-whatsapp transition-all hover:brightness-105 hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2 active:scale-[0.98]"
+            >
+              <WhatsAppIcon />
+              Chat on WhatsApp
+            </a>
+          </StepShell>
+        )}
+
           </StepShell>
         )}
 
