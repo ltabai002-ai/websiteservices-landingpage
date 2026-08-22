@@ -33,12 +33,15 @@ const waLink = (message: string) =>
 
 function Header() {
   return (
-    <header className="flex items-center justify-center pt-5 pb-3">
+    <header className="flex items-center justify-center gap-2 pt-5 pb-3">
       <img
         src={ltabLogo}
-        alt="LTAB logo"
-        className="h-10 w-auto object-contain sm:h-12"
+        alt="LTAB logo icon"
+        className="h-9 w-9 shrink-0 object-contain rounded-full"
       />
+      <span className="truncate text-sm font-extrabold tracking-tight text-foreground sm:text-base">
+        Ltab your 360° digital partner.
+      </span>
     </header>
   );
 }
@@ -591,72 +594,68 @@ export default function GrowthFunnel() {
 
         {step === 0 && (
           <StepShell stepKey="s0">
-            <h1 className="text-balance text-center text-[1.75rem] font-extrabold leading-[1.15] tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
-              Upgrade Your Google Business Profile —{" "}
-              <span className="bg-gradient-to-r from-terracotta to-primary bg-clip-text text-transparent">
-                Get More Clients.
-              </span>
-            </h1>
-            <p className="mx-auto mt-3 max-w-prose text-center text-[0.95rem] leading-relaxed text-muted-foreground sm:text-lg">
-              Add a professional website, list all your services, and connect customers directly to your WhatsApp.
-            </p>
-
-            <div className="mt-6 rounded-3xl border border-terracotta/15 bg-card/90 p-3 shadow-soft sm:p-5">
-              <GoogleDashboardMockup />
-
-              {/* Character & Chat Bubble */}
-              <div className="mt-6 flex flex-col items-center">
-                <div className="relative mb-3 max-w-[280px] rounded-2xl border border-terracotta/15 bg-card px-4 py-2.5 text-center shadow-soft">
-                  {/* Chat bubble tail pointing down */}
-                  <div className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-r border-b border-terracotta/15 bg-card" />
-                  <p className="text-sm font-extrabold text-foreground">
-                    Does your Google Business Profile look like this?
-                  </p>
-                </div>
-                
-                <img
-                  src={characterHero}
-                  alt="Friendly 360° Growth Partner guide pointing up"
-                  width={896}
-                  height={1152}
-                  className="mx-auto h-auto w-full max-w-[200px] object-contain sm:max-w-[240px]"
-                />
-              </div>
+            <div className="flex justify-center my-6">
+              <h1 className="inline-block transform rotate-[-1.5deg] rounded-3xl border-4 border-white bg-gradient-to-br from-terracotta via-primary to-teal p-5 text-center shadow-lift transition-transform hover:rotate-0">
+                <span className="block text-[1.4rem] font-black leading-snug text-white sm:text-xl lg:text-2xl uppercase tracking-tight">
+                  Upgrade your Google Business Profile
+                </span>
+                <span className="mt-1 block text-[1.75rem] font-black leading-none text-saffron drop-shadow-sm sm:text-2xl lg:text-3xl uppercase tracking-tighter">
+                  to get more clients!
+                </span>
+              </h1>
             </div>
-
-            {/* 3-Step To-Do List */}
-            <div className="mt-6 rounded-3xl border border-teal/15 bg-card/85 p-4 shadow-soft sm:p-5">
-              <h3 className="text-sm font-extrabold text-foreground mb-3 sm:text-base">
-                Steps to Upgrade Your Business:
-              </h3>
-              <ul className="space-y-3">
+            <p className="mx-auto mt-3 max-w-prose text-center text-[0.95rem] leading-relaxed text-muted-foreground sm:text-lg">
+              There are three actions that will help you achieve this:
+            </p>
+            {/* Combined Listicle & Character Card */}
+            <div className="mt-6 rounded-3xl border border-terracotta/15 bg-card/90 p-4 shadow-soft sm:p-6">
+              <ul className="space-y-3.5">
                 <li className="flex items-center gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs">
                     1
                   </span>
-                  <span className="text-sm font-bold text-foreground">Create a website</span>
+                  <span className="text-sm font-bold text-foreground">Add a professional website.</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs">
                     2
                   </span>
-                  <span className="text-sm font-bold text-foreground">Add your services and products</span>
+                  <span className="text-sm font-bold text-foreground">List all your products or services.</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs">
                     3
                   </span>
-                  <span className="text-sm font-bold text-foreground">Connect to WhatsApp easily</span>
+                  <span className="text-sm font-bold text-foreground">Make an easy way to connect using WhatsApp.</span>
                 </li>
               </ul>
+
+              {/* Decorative Divider */}
+              <div className="my-5 border-t border-border" />
+
+              {/* Character */}
+              <div className="flex flex-col items-center">
+                <img
+                  src={characterHero}
+                  alt="Friendly guide pointing up"
+                  width={896}
+                  height={1152}
+                  className="mx-auto h-auto w-full max-w-[180px] object-contain sm:max-w-[220px]"
+                />
+              </div>
             </div>
 
-            <p className="mt-4 text-center text-sm font-semibold text-terracotta">
-              Trusted by 100+ businesses already.
+            <p className="mt-6 text-center text-sm font-extrabold text-primary">
+              Do everything, starting at only ₹99.
             </p>
-            <div className="mt-5">
-              <PrimaryButton onClick={() => setStep(1)}>Let's Start</PrimaryButton>
+
+            <div className="mt-4">
+              <PrimaryButton onClick={() => setStep(1)}>Let's Begin</PrimaryButton>
             </div>
+
+            <p className="mt-6 text-center text-xs font-semibold text-muted-foreground tracking-wide uppercase">
+              LTAB — Your 360° Digital Partner
+            </p>
           </StepShell>
         )}
 
