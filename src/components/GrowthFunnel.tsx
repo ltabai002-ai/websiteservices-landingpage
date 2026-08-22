@@ -567,6 +567,13 @@ export default function GrowthFunnel() {
                 Talk to Our Team
               </PrimaryButton>
             </div>
+            <button
+              type="button"
+              onClick={() => setStep(2)}
+              className="mx-auto mt-6 block min-h-[2.75rem] rounded-full px-5 py-2 text-sm font-semibold text-terracotta underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              ← Back
+            </button>
           </StepShell>
         )}
 
@@ -649,15 +656,42 @@ export default function GrowthFunnel() {
               </div>
             </div>
 
-            <div className="mt-5 rounded-3xl border-2 border-dashed border-teal/50 bg-teal/5 p-4 sm:p-5">
-              <p className="text-sm text-secondary-foreground">{offer.upsell}</p>
-              <button
-                type="button"
-                onClick={() => selectPlan("₹4,999 — Custom Website")}
-                className="mt-3 min-h-[3rem] w-full rounded-2xl border-2 border-teal bg-card px-5 py-3 text-sm font-bold text-teal shadow-soft transition-all hover:-translate-y-0.5 hover:bg-teal hover:text-teal-foreground hover:shadow-lift active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                Select this instead
-              </button>
+            <div className="mt-5 overflow-hidden rounded-3xl border-2 border-teal/40 bg-card shadow-lift">
+              <div className="bg-gradient-to-r from-teal to-primary px-4 py-3 sm:px-5">
+                <p className="text-base font-extrabold text-white sm:text-lg">
+                  Custom Website — ₹4,999
+                </p>
+                <p className="mt-0.5 text-xs font-medium text-white/80">
+                  For businesses that want more
+                </p>
+              </div>
+              <div className="p-4 sm:p-5">
+                <ul className="space-y-2">
+                  <li className="flex gap-2 text-sm text-muted-foreground">
+                    <span aria-hidden="true" className="shrink-0 font-bold text-teal">✓</span>
+                    <span>Multiple pages for products, services &amp; more</span>
+                  </li>
+                  <li className="flex gap-2 text-sm text-muted-foreground">
+                    <span aria-hidden="true" className="shrink-0 font-bold text-teal">✓</span>
+                    <span>SEO-optimized to rank higher on Google</span>
+                  </li>
+                  <li className="flex gap-2 text-sm text-muted-foreground">
+                    <span aria-hidden="true" className="shrink-0 font-bold text-teal">✓</span>
+                    <span>Custom design tailored to your brand</span>
+                  </li>
+                  <li className="flex gap-2 text-sm text-muted-foreground">
+                    <span aria-hidden="true" className="shrink-0 font-bold text-teal">✓</span>
+                    <span>WhatsApp Connect on every page</span>
+                  </li>
+                </ul>
+                <button
+                  type="button"
+                  onClick={() => selectPlan("₹4,999 — Custom Website")}
+                  className="mt-4 min-h-[3.25rem] w-full rounded-2xl bg-gradient-to-r from-teal to-primary px-5 py-4 text-base font-extrabold text-white shadow-soft transition-all hover:-translate-y-0.5 hover:brightness-110 hover:shadow-lift active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:text-lg"
+                >
+                  Choose ₹4,999 Plan
+                </button>
+              </div>
             </div>
           </StepShell>
         )}
