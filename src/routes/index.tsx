@@ -1,24 +1,28 @@
 import { createFileRoute } from "@tanstack/react-router";
+import GrowthFunnel from "@/components/GrowthFunnel";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "₹99 Website for Your Business | 360° Growth Partner" },
+      {
+        name: "description",
+        content:
+          "Get a simple website linked to your Google Business Profile for ₹99/month. Customers see your services and reach you instantly on WhatsApp or call.",
+      },
+      { property: "og:title", content: "A Website for Your Business — Just ₹99" },
+      {
+        property: "og:description",
+        content:
+          "We build it first, you pay only when you're happy. Live within 24 hours, with one-click WhatsApp for your customers.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  return <GrowthFunnel />;
 }
