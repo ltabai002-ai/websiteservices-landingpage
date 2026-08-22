@@ -469,9 +469,6 @@ export default function GrowthFunnel() {
           </StepShell>
         )}
 
-          </StepShell>
-        )}
-
         {step === 1 && (
           <StepShell stepKey="s1">
             <Guide text="Quick question first — it takes 10 seconds." />
