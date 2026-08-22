@@ -708,95 +708,255 @@ export default function GrowthFunnel() {
               <div className="overflow-hidden rounded-3xl border-2 border-terracotta/30 bg-card shadow-soft">
                 <div className="flex items-center gap-3 bg-gradient-to-r from-terracotta to-saffron px-4 py-3 sm:px-5">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">📦</span>
-                  <p className="text-base font-extrabold text-terracotta-foreground sm:text-lg">Your Plan</p>
+                  <div>
+                    <p className="text-base font-extrabold text-terracotta-foreground sm:text-lg">Your Plan</p>
+                    {answers.businessType && (
+                      <p className="text-xs font-medium text-terracotta-foreground/80">
+                        Tailored for your {answers.businessType === "both" ? "product + service" : answers.businessType} business
+                      </p>
+                    )}
+                  </div>
                 </div>
                 <div className="px-4 py-3 sm:px-5">
                   <p className="text-sm font-bold text-foreground">{answers.selectedPlan}</p>
-                  {answers.businessType && (
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Tailored for your {answers.businessType === "both" ? "product + service" : answers.businessType} business
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              {/* What's Included */}
-              <div className="overflow-hidden rounded-3xl border-2 border-teal/30 bg-card shadow-soft">
-                <div className="flex items-center gap-3 bg-gradient-to-r from-teal to-primary px-4 py-3 sm:px-5">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">✅</span>
-                  <p className="text-base font-extrabold text-white sm:text-lg">What's Included</p>
-                </div>
-                <div className="px-4 py-3 sm:px-5">
-                  <ul className="space-y-2">
-                    {answers.businessType === "product" && (
+                  <ul className="mt-2 space-y-1.5">
+                    {answers.selectedPlan.includes("4,999") ? (
                       <>
                         <li className="flex gap-2 text-sm text-muted-foreground">
-                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Multi-page custom website with unique design</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Separate pages for products, services, about & contact</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>SEO-optimized structure to rank higher on Google</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>WhatsApp Connect button on every page</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Mobile-responsive & fast loading</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Custom domain setup assistance</span>
+                        </li>
+                      </>
+                    ) : answers.businessType === "product" ? (
+                      <>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
                           <span>Digital product catalog with photos</span>
                         </li>
                         <li className="flex gap-2 text-sm text-muted-foreground">
-                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
                           <span>Direct-to-WhatsApp ordering on every product</span>
                         </li>
-                      </>
-                    )}
-                    {answers.businessType === "service" && (
-                      <>
                         <li className="flex gap-2 text-sm text-muted-foreground">
-                          <span className="shrink-0 font-bold text-teal">✓</span>
-                          <span>Professional service listing page</span>
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>No app needed — customers tap and chat</span>
                         </li>
                         <li className="flex gap-2 text-sm text-muted-foreground">
-                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Mobile-friendly & professional design</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Live within 24 hours</span>
+                        </li>
+                      </>
+                    ) : answers.businessType === "service" ? (
+                      <>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Professional service listing with clear descriptions</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
                           <span>One-click WhatsApp connect button</span>
                         </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Looks professional on all devices</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Live within 24 hours</span>
+                        </li>
                       </>
-                    )}
-                    {answers.businessType === "both" && (
+                    ) : answers.businessType === "both" ? (
                       <>
                         <li className="flex gap-2 text-sm text-muted-foreground">
-                          <span className="shrink-0 font-bold text-teal">✓</span>
-                          <span>Combined products & services page</span>
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Combined products & services on one page</span>
                         </li>
                         <li className="flex gap-2 text-sm text-muted-foreground">
-                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
                           <span>WhatsApp connect on every section</span>
                         </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Clean, professional & mobile-friendly</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-terracotta">✓</span>
+                          <span>Live within 24 hours</span>
+                        </li>
                       </>
-                    )}
-                    {!answers.businessType && (
+                    ) : (
                       <li className="flex gap-2 text-sm text-muted-foreground">
-                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span className="shrink-0 font-bold text-terracotta">✓</span>
                         <span>Custom consultation with our team</span>
                       </li>
                     )}
-                    <li className="flex gap-2 text-sm text-muted-foreground">
-                      <span className="shrink-0 font-bold text-teal">✓</span>
-                      <span>Mobile-friendly design</span>
-                    </li>
-                    <li className="flex gap-2 text-sm text-muted-foreground">
-                      <span className="shrink-0 font-bold text-teal">✓</span>
-                      <span>Live within 24 hours</span>
-                    </li>
                   </ul>
                 </div>
               </div>
 
-              {/* Extra Services */}
-              {answers.extraServices.length > 0 && (
-                <div className="overflow-hidden rounded-3xl border-2 border-saffron/30 bg-card shadow-soft">
-                  <div className="flex items-center gap-3 bg-gradient-to-r from-saffron to-terracotta/80 px-4 py-3 sm:px-5">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">🚀</span>
-                    <p className="text-base font-extrabold text-terracotta-foreground sm:text-lg">Add-On Services</p>
+              {/* SEO - shown only if selected */}
+              {answers.extraServices.includes("SEO") && (
+                <div className="overflow-hidden rounded-3xl border-2 border-teal/30 bg-card shadow-soft">
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-teal to-primary px-4 py-3 sm:px-5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">🔍</span>
+                    <div>
+                      <p className="text-base font-extrabold text-white sm:text-lg">SEO</p>
+                      <p className="text-xs font-medium text-white/80">Get found on Google organically</p>
+                    </div>
                   </div>
                   <div className="px-4 py-3 sm:px-5">
-                    <ul className="space-y-2">
-                      {answers.extraServices.map((service) => (
-                        <li key={service} className="flex gap-2 text-sm text-muted-foreground">
-                          <span className="shrink-0 font-bold text-saffron">✓</span>
-                          <span>{service}</span>
-                        </li>
-                      ))}
+                    <ul className="space-y-1.5">
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>On-page SEO optimization for your website</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>Google Search Console & Analytics setup</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>Keyword research & targeting for your area</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>Local SEO to show up in "near me" searches</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>Monthly SEO performance report</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* Google Ads - shown only if selected */}
+              {answers.extraServices.includes("Google Ads") && (
+                <div className="overflow-hidden rounded-3xl border-2 border-google-blue/30 bg-card shadow-soft">
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-google-blue to-blue-500 px-4 py-3 sm:px-5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">📢</span>
+                    <div>
+                      <p className="text-base font-extrabold text-white sm:text-lg">Google Ads</p>
+                      <p className="text-xs font-medium text-white/80">Get customers from paid search</p>
+                    </div>
+                  </div>
+                  <div className="px-4 py-3 sm:px-5">
+                    <ul className="space-y-1.5">
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-google-blue">✓</span>
+                        <span>Google Ads campaign setup & launch</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-google-blue">✓</span>
+                        <span>Keyword research & high-intent targeting</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-google-blue">✓</span>
+                        <span>Ad copywriting that drives clicks & calls</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-google-blue">✓</span>
+                        <span>Budget optimization & bid management</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-google-blue">✓</span>
+                        <span>Monthly performance tracking & ROI reports</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* Social Media Management - shown only if selected */}
+              {answers.extraServices.includes("Social Media Management") && (
+                <div className="overflow-hidden rounded-3xl border-2 border-saffron/30 bg-card shadow-soft">
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-saffron to-terracotta/80 px-4 py-3 sm:px-5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">📱</span>
+                    <div>
+                      <p className="text-base font-extrabold text-terracotta-foreground sm:text-lg">Social Media Management</p>
+                      <p className="text-xs font-medium text-terracotta-foreground/80">Build your brand on social platforms</p>
+                    </div>
+                  </div>
+                  <div className="px-4 py-3 sm:px-5">
+                    <ul className="space-y-1.5">
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-saffron">✓</span>
+                        <span>Social media account setup & branding</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-saffron">✓</span>
+                        <span>Content calendar with regular posts</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-saffron">✓</span>
+                        <span>Creative post designs (images & reels)</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-saffron">✓</span>
+                        <span>Engagement & community management</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-saffron">✓</span>
+                        <span>Monthly analytics & growth report</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* Photography - shown only if selected */}
+              {answers.extraServices.includes("Photography") && (
+                <div className="overflow-hidden rounded-3xl border-2 border-primary/30 bg-card shadow-soft">
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-primary to-teal px-4 py-3 sm:px-5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">📸</span>
+                    <div>
+                      <p className="text-base font-extrabold text-white sm:text-lg">Photography</p>
+                      <p className="text-xs font-medium text-white/80">Professional visuals for your business</p>
+                    </div>
+                  </div>
+                  <div className="px-4 py-3 sm:px-5">
+                    <ul className="space-y-1.5">
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-primary">✓</span>
+                        <span>Professional product / business photoshoot</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-primary">✓</span>
+                        <span>High-quality edited images (10–20 photos)</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-primary">✓</span>
+                        <span>Optimized for website, social media & Google</span>
+                      </li>
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-primary">✓</span>
+                        <span>Full usage rights — use anywhere you want</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -806,9 +966,12 @@ export default function GrowthFunnel() {
               <div className="overflow-hidden rounded-3xl border-2 border-border bg-card shadow-soft">
                 <div className="flex items-center gap-3 bg-gradient-to-r from-secondary to-muted px-4 py-3 sm:px-5">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/50 text-lg" aria-hidden="true">📍</span>
-                  <p className="text-base font-extrabold text-foreground sm:text-lg">Your Digital Presence</p>
+                  <div>
+                    <p className="text-base font-extrabold text-foreground sm:text-lg">Your Digital Presence</p>
+                    <p className="text-xs font-medium text-muted-foreground">Google Business & website status</p>
+                  </div>
                 </div>
-                <div className="px-4 py-3 sm:px-5 space-y-2">
+                <div className="px-4 py-3 sm:px-5 space-y-1.5">
                   <div className="flex items-center gap-2 text-sm">
                     <span className={`shrink-0 font-bold ${answers.hasGMB === "yes" ? "text-teal" : "text-terracotta"}`}>
                       {answers.hasGMB === "yes" ? "✓" : "✗"}
@@ -825,6 +988,12 @@ export default function GrowthFunnel() {
                       <span className="text-muted-foreground">
                         Website linked to GMB — {answers.websiteLinked === "yes" ? "Connected" : "We'll connect it for you"}
                       </span>
+                    </div>
+                  )}
+                  {answers.hasGMB === "no" && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="shrink-0 font-bold text-teal">+</span>
+                      <span className="text-muted-foreground">Free GMB setup included with your plan</span>
                     </div>
                   )}
                 </div>
