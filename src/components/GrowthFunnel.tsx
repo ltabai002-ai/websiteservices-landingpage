@@ -172,6 +172,23 @@ function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
+function BrowserIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} className={className} aria-hidden="true">
+      <rect x={2} y={3} width={20} height={18} rx={2} />
+      <path strokeLinecap="round" d="M2 8h20M5 5.5h.01M8 5.5h.01M11 5.5h.01" />
+    </svg>
+  );
+}
+
+function GridIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} className={className} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+    </svg>
+  );
+}
+
 function WhatsAppPill({ label }: { label: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full bg-whatsapp px-3 py-1.5 text-center text-xs font-bold text-whatsapp-foreground shadow-glow-whatsapp">
@@ -609,26 +626,49 @@ export default function GrowthFunnel() {
             </p>
             {/* Combined Listicle & Character Card */}
             <div className="mt-6 rounded-3xl border border-terracotta/15 bg-card/90 p-4 shadow-soft sm:p-6">
-              <ul className="space-y-3.5">
-                <li className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs">
+              <div className="space-y-4">
+                {/* Item 1 */}
+                <div
+                  style={{ animationDelay: "150ms" }}
+                  className="flex items-center gap-3.5 rounded-2xl border-2 border-teal/15 bg-teal/5 p-4 shadow-soft hover:shadow-lift transition-all hover:scale-[1.02] active:scale-[0.99] duration-300 animate-slide-in-left"
+                >
+                  <span className="flex h-6.5 w-6.5 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs shadow-soft">
                     1
                   </span>
-                  <span className="text-sm font-bold text-foreground">Add a professional website.</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs">
+                  <BrowserIcon className="h-5 w-5 text-teal shrink-0" />
+                  <span className="text-sm font-semibold text-slate-800 sm:text-base">
+                    <span className="text-teal font-extrabold">Add</span> a professional website.
+                  </span>
+                </div>
+
+                {/* Item 2 */}
+                <div
+                  style={{ animationDelay: "300ms" }}
+                  className="flex items-center gap-3.5 rounded-2xl border-2 border-terracotta/15 bg-terracotta/5 p-4 shadow-soft hover:shadow-lift transition-all hover:scale-[1.02] active:scale-[0.99] duration-300 animate-slide-in-left"
+                >
+                  <span className="flex h-6.5 w-6.5 shrink-0 items-center justify-center rounded-full bg-terracotta text-white font-extrabold text-xs shadow-soft">
                     2
                   </span>
-                  <span className="text-sm font-bold text-foreground">List all your products or services.</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal text-white font-extrabold text-xs">
+                  <GridIcon className="h-5 w-5 text-terracotta shrink-0" />
+                  <span className="text-sm font-semibold text-slate-800 sm:text-base">
+                    <span className="text-terracotta font-extrabold">List</span> all your products or services.
+                  </span>
+                </div>
+
+                {/* Item 3 */}
+                <div
+                  style={{ animationDelay: "450ms" }}
+                  className="flex items-center gap-3.5 rounded-2xl border-2 border-whatsapp/15 bg-whatsapp/5 p-4 shadow-soft hover:shadow-lift transition-all hover:scale-[1.02] active:scale-[0.99] duration-300 animate-slide-in-left"
+                >
+                  <span className="flex h-6.5 w-6.5 shrink-0 items-center justify-center rounded-full bg-whatsapp text-white font-extrabold text-xs shadow-soft">
                     3
                   </span>
-                  <span className="text-sm font-bold text-foreground">Make an easy way to connect using WhatsApp.</span>
-                </li>
-              </ul>
+                  <WhatsAppIcon className="h-5 w-5 text-whatsapp fill-whatsapp shrink-0" />
+                  <span className="text-sm font-semibold text-slate-800 sm:text-base">
+                    <span className="text-whatsapp font-extrabold">Make</span> an easy way to connect using WhatsApp.
+                  </span>
+                </div>
+              </div>
 
               {/* Decorative Divider */}
               <div className="my-5 border-t border-border" />
