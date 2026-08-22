@@ -398,57 +398,76 @@ export default function GrowthFunnel() {
               So people can see what you offer and contact you on WhatsApp or call, instantly.
             </p>
 
-            <div className="mt-6 rounded-3xl border border-terracotta/15 bg-card/90 p-3 shadow-soft sm:p-5">
-              <div className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-1.5 sm:gap-3">
-                <PhoneFrame label="Before">
-                  <p className="truncate text-[0.68rem] font-bold text-foreground sm:text-sm">
-                    Sharma Traders
-                  </p>
-                  <div className="mt-2 space-y-1.5">
-                    <GoogleRow>No services listed</GoogleRow>
-                    <GoogleRow>No website</GoogleRow>
-                    <GoogleRow>No WhatsApp</GoogleRow>
-                  </div>
-                </PhoneFrame>
-                <span
-                  aria-hidden="true"
-                  className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-terracotta to-saffron text-sm font-bold text-terracotta-foreground shadow-glow-terracotta sm:h-9 sm:w-9 sm:text-base"
-                >
-                  →
-                </span>
-                <PhoneFrame label="After">
-                  <p className="truncate text-[0.68rem] font-bold text-foreground sm:text-sm">
-                    Sharma Traders
-                  </p>
-                  <div className="mt-2 space-y-1.5">
-                    <div className="flex gap-1">
-                      <span
-                        className="h-6 flex-1 rounded bg-gradient-to-br from-saffron to-terracotta/70"
-                        aria-hidden="true"
-                      />
-                      <span
-                        className="h-6 flex-1 rounded bg-gradient-to-br from-teal/70 to-primary"
-                        aria-hidden="true"
-                      />
+            <div className="mt-6 rounded-3xl border border-terracotta/15 bg-card/90 p-4 shadow-soft sm:p-6">
+              {/* Google Business Profile Dashboard Mockup */}
+              <div className="mx-auto max-w-sm rounded-2xl border border-border bg-background p-4 shadow-sm">
+                <div className="flex items-center gap-2 border-b pb-3 mb-3">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-google-blue/15 text-google-blue font-extrabold text-xs">
+                    G
+                  </span>
+                  <span className="text-xs font-bold text-muted-foreground tracking-wider uppercase">Google Business Profile</span>
+                </div>
+                
+                <h3 className="text-base font-extrabold text-foreground">Sharma Traders</h3>
+                <p className="text-xs text-muted-foreground">Dashboard Status</p>
+
+                <div className="mt-4 space-y-2.5">
+                  {/* Website Section with Error */}
+                  <div className="flex items-center justify-between rounded-xl border border-destructive/20 bg-destructive/5 p-3">
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-lg" role="img" aria-label="Website error">🌐</span>
+                      <div>
+                        <p className="text-xs font-bold text-foreground">Website Link</p>
+                        <p className="text-[0.7rem] text-destructive font-semibold">❌ Website missing / error</p>
+                      </div>
                     </div>
-                    <GoogleRow>
-                      <span className="font-bold text-google-blue">Website</span> linked
-                    </GoogleRow>
-                    <GoogleRow>4 services listed</GoogleRow>
-                    <div className="flex animate-soft-pulse items-center justify-center rounded-md bg-whatsapp py-1 text-[0.58rem] font-bold text-whatsapp-foreground sm:text-[0.65rem]">
-                      WhatsApp
-                    </div>
+                    <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[0.6rem] font-bold text-destructive">Fix Required</span>
                   </div>
-                </PhoneFrame>
+
+                  {/* Services Section with Error */}
+                  <div className="flex items-center justify-between rounded-xl border border-destructive/20 bg-destructive/5 p-3">
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-lg" role="img" aria-label="Services error">💼</span>
+                      <div>
+                        <p className="text-xs font-bold text-foreground">Services List</p>
+                        <p className="text-[0.7rem] text-destructive font-semibold">❌ No services listed</p>
+                      </div>
+                    </div>
+                    <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[0.6rem] font-bold text-destructive">Fix Required</span>
+                  </div>
+
+                  {/* WhatsApp/Contact Section with Error */}
+                  <div className="flex items-center justify-between rounded-xl border border-destructive/20 bg-destructive/5 p-3">
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-lg" role="img" aria-label="WhatsApp error">💬</span>
+                      <div>
+                        <p className="text-xs font-bold text-foreground">WhatsApp Connection</p>
+                        <p className="text-[0.7rem] text-destructive font-semibold">❌ Not connected</p>
+                      </div>
+                    </div>
+                    <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-[0.6rem] font-bold text-destructive">Fix Required</span>
+                  </div>
+                </div>
               </div>
 
-              <img
-                src={characterHero}
-                alt="Friendly 360° Growth Partner guide welcoming you"
-                width={896}
-                height={1152}
-                className="mx-auto mt-4 h-auto w-full max-w-[220px] object-contain sm:max-w-[260px]"
-              />
+              {/* Character & Chat Bubble */}
+              <div className="mt-6 flex flex-col items-center">
+                <div className="relative mb-3 max-w-[280px] rounded-2xl border border-terracotta/15 bg-card px-4 py-2.5 text-center shadow-soft">
+                  {/* Chat bubble tail pointing down */}
+                  <div className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-r border-b border-terracotta/15 bg-card" />
+                  <p className="text-sm font-extrabold text-foreground">
+                    Does your Google Business Profile look like this?
+                  </p>
+                </div>
+                
+                <img
+                  src={characterHero}
+                  alt="Friendly 360° Growth Partner guide pointing up"
+                  width={896}
+                  height={1152}
+                  className="mx-auto h-auto w-full max-w-[200px] object-contain sm:max-w-[240px]"
+                />
+              </div>
             </div>
 
             <p className="mt-4 text-center text-sm font-semibold text-terracotta">
