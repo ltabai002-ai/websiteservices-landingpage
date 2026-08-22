@@ -4,7 +4,7 @@ import characterGuide from "@/assets/character-guide.png";
 
 const AGENCY_NUMBER = "916000683808";
 
-type StepId = 0 | 1 | 2 | 25 | 3 | 4 | 5 | 6;
+type StepId = 0 | 1 | 2 | 25 | 3 | 4 | 45 | 5 | 6;
 type BusinessType = "product" | "service" | "both";
 
 type Answers = {
@@ -39,7 +39,7 @@ function Header() {
 }
 
 function Progress({ current }: { current: number }) {
-  const total = 6;
+  const total = 7;
   const pct = Math.round((current / total) * 100);
   return (
     <div className="pb-6">
@@ -332,7 +332,7 @@ export default function GrowthFunnel() {
   const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
 
   const progressIndex = useMemo(() => {
-    const map: Record<StepId, number> = { 0: 0, 1: 1, 2: 2, 25: 3, 3: 3, 4: 4, 5: 5, 6: 6 };
+    const map: Record<StepId, number> = { 0: 0, 1: 1, 2: 2, 25: 3, 3: 3, 4: 4, 45: 5, 5: 6, 6: 7 };
     return map[step];
   }, [step]);
 
@@ -375,7 +375,7 @@ export default function GrowthFunnel() {
 
   const selectPlan = (plan: string) => {
     update({ selectedPlan: plan });
-    setStep(5);
+    setStep(45);
   };
 
   const offer = answers.businessType ? OFFERS[answers.businessType as BusinessType] : null;
@@ -696,6 +696,161 @@ export default function GrowthFunnel() {
           </StepShell>
         )}
 
+        {step === 45 && (
+          <StepShell stepKey="s45">
+            <Guide text="Here's a quick look at everything we'll set up for you." />
+            <h2 className="text-balance text-[1.5rem] font-extrabold leading-tight text-foreground sm:text-3xl">
+              Here's What You're Getting
+            </h2>
+
+            <div className="mt-5 space-y-4">
+              {/* Selected Plan */}
+              <div className="overflow-hidden rounded-3xl border-2 border-terracotta/30 bg-card shadow-soft">
+                <div className="flex items-center gap-3 bg-gradient-to-r from-terracotta to-saffron px-4 py-3 sm:px-5">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">📦</span>
+                  <p className="text-base font-extrabold text-terracotta-foreground sm:text-lg">Your Plan</p>
+                </div>
+                <div className="px-4 py-3 sm:px-5">
+                  <p className="text-sm font-bold text-foreground">{answers.selectedPlan}</p>
+                  {answers.businessType && (
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Tailored for your {answers.businessType === "both" ? "product + service" : answers.businessType} business
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* What's Included */}
+              <div className="overflow-hidden rounded-3xl border-2 border-teal/30 bg-card shadow-soft">
+                <div className="flex items-center gap-3 bg-gradient-to-r from-teal to-primary px-4 py-3 sm:px-5">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">✅</span>
+                  <p className="text-base font-extrabold text-white sm:text-lg">What's Included</p>
+                </div>
+                <div className="px-4 py-3 sm:px-5">
+                  <ul className="space-y-2">
+                    {answers.businessType === "product" && (
+                      <>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span>Digital product catalog with photos</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span>Direct-to-WhatsApp ordering on every product</span>
+                        </li>
+                      </>
+                    )}
+                    {answers.businessType === "service" && (
+                      <>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span>Professional service listing page</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span>One-click WhatsApp connect button</span>
+                        </li>
+                      </>
+                    )}
+                    {answers.businessType === "both" && (
+                      <>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span>Combined products & services page</span>
+                        </li>
+                        <li className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-teal">✓</span>
+                          <span>WhatsApp connect on every section</span>
+                        </li>
+                      </>
+                    )}
+                    {!answers.businessType && (
+                      <li className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="shrink-0 font-bold text-teal">✓</span>
+                        <span>Custom consultation with our team</span>
+                      </li>
+                    )}
+                    <li className="flex gap-2 text-sm text-muted-foreground">
+                      <span className="shrink-0 font-bold text-teal">✓</span>
+                      <span>Mobile-friendly design</span>
+                    </li>
+                    <li className="flex gap-2 text-sm text-muted-foreground">
+                      <span className="shrink-0 font-bold text-teal">✓</span>
+                      <span>Live within 24 hours</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Extra Services */}
+              {answers.extraServices.length > 0 && (
+                <div className="overflow-hidden rounded-3xl border-2 border-saffron/30 bg-card shadow-soft">
+                  <div className="flex items-center gap-3 bg-gradient-to-r from-saffron to-terracotta/80 px-4 py-3 sm:px-5">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 text-lg" aria-hidden="true">🚀</span>
+                    <p className="text-base font-extrabold text-terracotta-foreground sm:text-lg">Add-On Services</p>
+                  </div>
+                  <div className="px-4 py-3 sm:px-5">
+                    <ul className="space-y-2">
+                      {answers.extraServices.map((service) => (
+                        <li key={service} className="flex gap-2 text-sm text-muted-foreground">
+                          <span className="shrink-0 font-bold text-saffron">✓</span>
+                          <span>{service}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              {/* GMB & Website Status */}
+              <div className="overflow-hidden rounded-3xl border-2 border-border bg-card shadow-soft">
+                <div className="flex items-center gap-3 bg-gradient-to-r from-secondary to-muted px-4 py-3 sm:px-5">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/50 text-lg" aria-hidden="true">📍</span>
+                  <p className="text-base font-extrabold text-foreground sm:text-lg">Your Digital Presence</p>
+                </div>
+                <div className="px-4 py-3 sm:px-5 space-y-2">
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className={`shrink-0 font-bold ${answers.hasGMB === "yes" ? "text-teal" : "text-terracotta"}`}>
+                      {answers.hasGMB === "yes" ? "✓" : "✗"}
+                    </span>
+                    <span className="text-muted-foreground">
+                      Google Business Profile — {answers.hasGMB === "yes" ? "Active" : "We'll help you set it up"}
+                    </span>
+                  </div>
+                  {answers.hasGMB === "yes" && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className={`shrink-0 font-bold ${answers.websiteLinked === "yes" ? "text-teal" : "text-terracotta"}`}>
+                        {answers.websiteLinked === "yes" ? "✓" : "✗"}
+                      </span>
+                      <span className="text-muted-foreground">
+                        Website linked to GMB — {answers.websiteLinked === "yes" ? "Connected" : "We'll connect it for you"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* No upfront payment reminder */}
+            <p className="mt-4 rounded-2xl border border-teal/25 bg-teal/10 px-4 py-3 text-center text-sm font-medium text-foreground">
+              🎉 No upfront payment — you only pay once you're happy with it!
+            </p>
+
+            <div className="mt-5">
+              <PrimaryButton onClick={() => setStep(5)}>
+                Looks Good — Let's Go!
+              </PrimaryButton>
+            </div>
+            <button
+              type="button"
+              onClick={() => setStep(answers.businessType ? 4 : 25)}
+              className="mx-auto mt-6 block min-h-[2.75rem] rounded-full px-5 py-2 text-sm font-semibold text-terracotta underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              ← Back
+            </button>
+          </StepShell>
+        )}
+
         {step === 5 && (
           <StepShell stepKey="s5">
             <Guide text="Almost there — just your details." />
@@ -817,7 +972,7 @@ export default function GrowthFunnel() {
             type="button"
             onClick={() =>
               setStep((s) =>
-                s === 5 ? (answers.businessType ? 4 : 25) : s === 4 ? 3 : s === 25 ? 2 : s === 3 ? (answers.hasGMB === "yes" ? 2 : 1) : s === 2 ? 1 : 0,
+                s === 5 ? 45 : s === 45 ? (answers.businessType ? 4 : 25) : s === 4 ? 3 : s === 25 ? 2 : s === 3 ? (answers.hasGMB === "yes" ? 2 : 1) : s === 2 ? 1 : 0,
               )
             }
             className="mx-auto mt-8 block min-h-[2.75rem] rounded-full px-5 py-2 text-sm font-semibold text-terracotta underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
